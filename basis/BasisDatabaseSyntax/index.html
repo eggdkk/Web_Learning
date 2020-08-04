@@ -269,6 +269,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -405,6 +412,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -428,6 +442,7 @@
 <li><a href="#_2"></a></li>
 <li><a href="#_3"></a></li>
 <li><a href="#mysql">MySQL基本语句</a></li>
+<li><a href="#_4"></a></li>
 </ul>
 </li>
 </ul>
@@ -435,9 +450,33 @@
 <h2 id="_2"><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h2 id="_3"><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <h2 id="mysql">MySQL基本语句<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h2>
-<p>ssh连接MySQL数据库
-<div class="highlight"><pre><span></span><code>mysql -u root -p
+<p><div class="highlight"><pre><span></span><code>docker run -d -p 3307:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
+</code></pre></div>
+ssh连接MySQL数据库
+<div class="highlight"><pre><span></span><code>mysql -uroot -p123456
+</code></pre></div>
+登陆 MySQL 服务后，使用<code>create</code>命令创建数据库</p>
+<div class="highlight"><pre><span></span><code>CREATE DATABASE test;
+</code></pre></div>
+
+<p>选择指定数据库
+<code>use DATABASE;</code>
+<div class="highlight"><pre><span></span><code>use test;
 </code></pre></div></p>
+<p>创建数据表
+<code>CREATE TABLE table_name (column_name column_type);</code>
+<div class="highlight"><pre><span></span><code>CREATE TABLE users (
+    `id` INT UNSIGNED AUTO_INCREMENT,
+    `username` VARCHAR(100) NOT NULL, 
+    `password` VARCHAR(100) NOT NULL, 
+    PRIMARY KEY ( `id` )
+);
+</code></pre></div></p>
+<p>插入数据</p>
+<div class="highlight"><pre><span></span><code>INSERT INTO users (id,username,password) VALUES (1,&quot;admin&quot;,&quot;1234567890&quot;);
+</code></pre></div>
+
+<h2 id="_4"><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
                 
               
               
