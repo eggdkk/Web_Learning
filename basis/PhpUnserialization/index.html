@@ -321,6 +321,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    反序列化的常见中间跳板
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#php_4" class="md-nav__link">
     PHP反序列漏洞代码
   </a>
@@ -331,6 +338,13 @@
           <li class="md-nav__item">
   <a href="#demo1" class="md-nav__link">
     Demo1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo2" class="md-nav__link">
+    Demo2
   </a>
   
 </li>
@@ -346,7 +360,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     反序列化漏洞常见类型
   </a>
   
@@ -373,7 +387,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     反序列化漏洞检测方法
   </a>
   
@@ -507,6 +521,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    反序列化的常见中间跳板
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#php_4" class="md-nav__link">
     PHP反序列漏洞代码
   </a>
@@ -517,6 +538,13 @@
           <li class="md-nav__item">
   <a href="#demo1" class="md-nav__link">
     Demo1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo2" class="md-nav__link">
+    Demo2
   </a>
   
 </li>
@@ -532,7 +560,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     反序列化漏洞常见类型
   </a>
   
@@ -559,7 +587,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     反序列化漏洞检测方法
   </a>
   
@@ -590,18 +618,20 @@
 <li><a href="#php_2">PHP反序列化</a></li>
 <li><a href="#php_3">PHP常见的魔术方法</a></li>
 <li><a href="#_2">反序列化的常见起点</a></li>
+<li><a href="#_3">反序列化的常见中间跳板</a></li>
 <li><a href="#php_4">PHP反序列漏洞代码</a><ul>
 <li><a href="#demo1">Demo1</a></li>
+<li><a href="#demo2">Demo2</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_3">反序列化漏洞常见类型</a><ul>
+<li><a href="#_4">反序列化漏洞常见类型</a><ul>
 <li><a href="#phar">Phar反序列化漏洞</a></li>
 <li><a href="#session">Session反序列化漏洞</a></li>
 </ul>
 </li>
-<li><a href="#_4">反序列化漏洞检测方法</a></li>
+<li><a href="#_5">反序列化漏洞检测方法</a></li>
 </ul>
 </li>
 </ul>
@@ -739,49 +769,39 @@ Process finished with exit code 0
 <td>当一个类被转换成字符串时被调用</td>
 <td>当一个对象被反序列化后又被当做字符串使用</td>
 </tr>
+</tbody>
+</table>
+<h3 id="_3">反序列化的常见中间跳板<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
 <tr>
-<td>### 反序列化的常见中间跳板</td>
-<td></td>
-<td></td>
+<th>方法名</th>
+<th>调用条件</th>
 </tr>
-<tr>
-<td>方法名</td>
-<td>调用条件</td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>-</td>
-<td></td>
-</tr>
+</thead>
+<tbody>
 <tr>
 <td>__toString</td>
 <td>当一个对象被当做字符串使用</td>
-<td></td>
 </tr>
 <tr>
 <td>__get</td>
 <td>读取不可访问或不存在属性时被调用</td>
-<td></td>
 </tr>
 <tr>
 <td>__set</td>
 <td>当给不可访问或不存在属性赋值时被调用</td>
-<td></td>
 </tr>
 <tr>
 <td>__isset</td>
 <td>对不可访问或不存在的属性调用isset()或empty()时被调用 形如<code>$this-&gt;$func();</code></td>
-<td></td>
 </tr>
 <tr>
 <td>### 反序列化的常见终点</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>__call 调用不可访问或不存在的方法时被调用</td>
-<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -790,10 +810,38 @@ Process finished with exit code 0
 <p>call_user_func_array 一般php代码执行都会选择这里</p>
 <h3 id="php_4">PHP反序列漏洞代码<a class="headerlink" href="#php_4" title="Permanent link">&para;</a></h3>
 <h4 id="demo1">Demo1<a class="headerlink" href="#demo1" title="Permanent link">&para;</a></h4>
-<h2 id="_3">反序列化漏洞常见类型<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>漏洞代码
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">Test</span><span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$test</span> <span class="o">=</span> <span class="s2">&quot;admin&quot;</span><span class="p">;</span>
+    <span class="k">function</span> <span class="fm">__destruct</span><span class="p">(){</span>
+        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;app&#39;</span><span class="p">];</span>
+<span class="nb">unserialize</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
+</code></pre></div>
+payload:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Test</span><span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$test</span> <span class="o">=</span> <span class="s2">&quot;dididi   dkkk&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nb">serialize</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
+</code></pre></div>
+即可控制输出<br />
+<img alt="" src="../../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/2.png" /><br />
+可以控制页面就可以XSS
+<img alt="" src="../../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/3.png" /></p>
+<h4 id="demo2">Demo2<a class="headerlink" href="#demo2" title="Permanent link">&para;</a></h4>
+<p>漏洞代码
+<div class="highlight"><pre><span></span><code>
+</code></pre></div></p>
+<h2 id="_4">反序列化漏洞常见类型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="phar">Phar反序列化漏洞<a class="headerlink" href="#phar" title="Permanent link">&para;</a></h3>
 <h3 id="session">Session反序列化漏洞<a class="headerlink" href="#session" title="Permanent link">&para;</a></h3>
-<h2 id="_4">反序列化漏洞检测方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">反序列化漏洞检测方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
                 
               
               
