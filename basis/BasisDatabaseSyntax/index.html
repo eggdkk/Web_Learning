@@ -275,6 +275,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    postgreSql
+  </a>
+  
+    <nav class="md-nav" aria-label="postgreSql">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    部署
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基本语句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -366,6 +393,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../usually/docker%2BPHPdebug/" title="docker+PHPdebug" class="md-nav__link">
+      docker+PHPdebug
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../usually/" title="Test" class="md-nav__link">
       Test
     </a>
@@ -441,6 +480,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    postgreSql
+  </a>
+  
+    <nav class="md-nav" aria-label="postgreSql">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    部署
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基本语句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -464,6 +530,11 @@
 <li><a href="#mysql">MySQL基本语句</a></li>
 <li><a href="#redis">Redis</a><ul>
 <li><a href="#_2">部署</a></li>
+</ul>
+</li>
+<li><a href="#postgresql">postgreSql</a><ul>
+<li><a href="#_3">部署</a></li>
+<li><a href="#_4">基本语句</a></li>
 </ul>
 </li>
 </ul>
@@ -500,6 +571,40 @@ ssh连接MySQL数据库
 <h2 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h2>
 <h3 id="_2">部署<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><code>docker run -d --name redis -p 6379:6379 redis</code></p>
+<h2 id="postgresql">postgreSql<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h2>
+<h3 id="_3">部署<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><code>docker run --name postgres -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres</code>
+<code>docker exec -it 381 bash</code></p>
+<h3 id="_4">基本语句<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>进入PostgreSql
+<code>psql -U postgres</code></p>
+<p>创建数据库
+<code>CREATE DATABASE DB1;</code></p>
+<p>查看数据库</p>
+<p><code>\l</code></p>
+<p>切换数据库</p>
+<p><code>\c db1</code></p>
+<p>新建表
+<code>create table ffffflllllaaaaagggggg(dkkk CHAR(50));</code></p>
+<p>查看当前数据库存在的表</p>
+<p><code>\d</code></p>
+<p>查看表格信息
+<code>\d tablename</code> </p>
+<p>插入数据
+<code>insert into ffffflllllaaaaagggggg values ('flag{testtesttesttest}');</code></p>
+<p>查询
+<code>select * from ffffflllllaaaaagggggg;</code></p>
+<div class="highlight"><pre><span></span><code>CREATE DATABASE fl4g;
+\c fl4g;
+create table ffffflllllaaaaagggggg(dkkk CHAR(50));
+insert into ffffflllllaaaaagggggg values (&#39;flag{testtesttesttest}&#39;);
+
+CREATE DATABASE hint;
+\c hint;
+create table hint(username CHAR(5),ssrf CHAR(50));
+insert into hint values (&#39;admin&#39;,&#39;ffffffllllll444444gg_ssrf.php&#39;);
+insert into hint values (&#39;aaest&#39;,&#39;hacker.php&#39;);
+</code></pre></div>
                 
               
               
