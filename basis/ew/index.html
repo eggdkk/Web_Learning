@@ -15,7 +15,7 @@
     
     
       
-        <title>Ew - My Docs</title>
+        <title>ssh隧道_ew穿透 - My Docs</title>
       
     
     
@@ -72,7 +72,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Ew
+              ssh隧道_ew穿透
             
           </span>
         </div>
@@ -282,10 +282,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       👴平常记录的
@@ -363,6 +365,25 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="ssh隧道_ew穿透" class="md-nav__link md-nav__link--active">
+      ssh隧道_ew穿透
+    </a>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -426,26 +447,57 @@
                   
                 
                 
-                  <h1>Ew</h1>
+                  <h1>ssh隧道_ew穿透</h1>
                 
-                <p>ssh -Nf -R 139.199.0.37:2222:192.168.199.16:22 139.199.0.37
-ssh -Nf 121.89.162.127:2222:10.147.20.103:22 121.89.162.127</p>
-<p>ssh -p 22 -qngfNTR 6766:localhost:22 root@121.89.162.127
-ssh -p 6766 admin@localhost</p>
-<p>ssh -fgN -R *:50000:127.0.0.1:5000 root@121.89.162.127</p>
-<p>ssh -fgN -R 50000:127.0.0.1:5000 root@121.89.162.127</p>
-<p>ssh -g -R *:5000:127.0.0.1:5000 root@121.89.162.127</p>
-<p>ssh -fgN -R 50000:127.0.0.1:5000 root@47.100.90.84</p>
-<p>47.100.90.84:50000</p>
-<p>wget <a href="http://ipkg.nslu2-linux.org/feeds/optware/syno-i686/cross/unstable/syno-i686-bootstrap_1.2-7_i686.xsh">http://ipkg.nslu2-linux.org/feeds/optware/syno-i686/cross/unstable/syno-i686-bootstrap_1.2-7_i686.xsh</a>
+                <div class="highlight"><pre><span></span><code>ssh -Nf -R 139.199.0.37:2222:192.168.199.16:22 139.199.0.37
+ssh -Nf 公网ip:2222:10.147.20.103:22 公网ip
+
+
+
+ssh -p 22 -qngfNTR 6766:localhost:22 root@公网ip
+ssh -p 6766 admin@localhost
+
+
+ssh -fgN -R *:50000:127.0.0.1:5000 root@公网ip
+
+
+ssh -fgN -R 50000:127.0.0.1:5000 root@公网ip
+
+
+
+ssh -g -R *:5000:127.0.0.1:5000 root@公网ip
+
+
+
+
+ssh -fgN -R 50000:127.0.0.1:5000 root@公网ip
+
+
+公网ip:50000
+
+
+wget http://ipkg.nslu2-linux.org/feeds/optware/syno-i686/cross/unstable/syno-i686-bootstrap_1.2-7_i686.xsh
 chmod +x syno-i686-bootstrap_1.2-7_i686.xsh
-sh syno-i686-bootstrap_1.2-7_i686.xsh</p>
-<p>autossh -p 22 -M 6777 -NR 6766:localhost:22 root@121.89.162.127</p>
-<p>autossh -M 5001 -NR 5000:localhost:5000 root@47.100.90.84</p>
-<p>./ew -s rcsocks -l 1080 -e 8888<br />
-//公网</p>
-<p>./ew -s rssocks -d 121.89.162.127 -e 8888 </p>
-<p>//内网</p>
+sh syno-i686-bootstrap_1.2-7_i686.xsh
+
+
+
+
+autossh -p 22 -M 6777 -NR 6766:localhost:22 root@公网ip
+
+
+
+autossh -M 5001 -NR 5000:localhost:5000 root@公网ip
+
+
+
+./ew -s rcsocks -l 1080 -e 8888  
+//公网
+
+./ew -s rssocks -d 公网ip -e 8888 
+
+//内网
+</code></pre></div>
                 
               
               
@@ -460,6 +512,41 @@ sh syno-i686-bootstrap_1.2-7_i686.xsh</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../usually/golang_dockerAPI/" title="golang_dockerAPI开发小记" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                golang_dockerAPI开发小记
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../vulhub/narak/" title="narak" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                narak
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
