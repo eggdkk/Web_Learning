@@ -564,6 +564,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CTF_Writeup/2020_Hackergame/" title="Hackergame 2020" class="md-nav__link">
+      Hackergame 2020
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -737,8 +749,8 @@
 <p>Mysql&gt;5.6.x
 对于waf掉<code>information_schema</code>，可以利用<code>innodb_table_stats</code>和<code>innodb_table_stats</code>两个表来查询到
 但是mysql默认是关闭InnoDB存储引擎的
-<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">table_name</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="n">innodb_table_stats</span> <span class="k">where</span> <span class="n">database_name</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
-<span class="k">select</span> <span class="n">table_name</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="n">innodb_index_stats</span> <span class="k">where</span> <span class="n">database_name</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">table_name</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="n">innodb_table_stats</span> <span class="k">where</span> <span class="n">database_name</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
+<span class="k">select</span> <span class="k">table_name</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="n">innodb_index_stats</span> <span class="k">where</span> <span class="n">database_name</span> <span class="o">=</span> <span class="k">database</span><span class="p">();</span>
 </code></pre></div></p>
 <h3 id="sys">sys<a class="headerlink" href="#sys" title="Permanent link">&para;</a></h3>
 <p>在MySQL 5.7.9中sys中新增了一些视图，可以从中获取表名

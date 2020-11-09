@@ -558,6 +558,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2020_Hackergame/" title="Hackergame 2020" class="md-nav__link">
+      Hackergame 2020
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -725,7 +737,7 @@
 <p>蚁剑新建编码器；
 <div class="highlight"><pre><span></span><code><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">forceEncode</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">s</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">i</span><span class="p">=&gt;</span><span class="s1">&#39;%&#39;</span><span class="o">+</span><span class="nx">i</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">s</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">i</span><span class="p">=&gt;</span><span class="s1">&#39;%&#39;</span><span class="o">+</span><span class="nx">i</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mf">16</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">pwd</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">ext</span><span class="o">=</span><span class="p">{})</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s1">&#39;_&#39;</span><span class="p">]</span>

