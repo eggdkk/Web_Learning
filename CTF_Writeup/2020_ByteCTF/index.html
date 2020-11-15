@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020CISCN_finals/">
+        <link rel="canonical" href="https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020_ByteCTF/">
       
       
         <meta name="author" content="dkk">
@@ -19,7 +19,7 @@
     
     
       
-        <title>2020CISCN_Finals - Web learning</title>
+        <title>2020_ByteCTF - Web learning</title>
       
     
     
@@ -57,7 +57,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2020ciscn_finals" class="md-skip">
+        <a href="#2020_bytectf" class="md-skip">
           Skip to content
         </a>
       
@@ -85,7 +85,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              2020CISCN_Finals
+              2020_ByteCTF
             
           </span>
         </div>
@@ -601,22 +601,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#web1" class="md-nav__link">
-    Web1
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#web2" class="md-nav__link">
-    Web2
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#web3" class="md-nav__link">
-    Web3
+  <a href="#_1" class="md-nav__link">
+    
   </a>
   
 </li>
@@ -633,7 +619,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/eggdkk/Web_Learning/edit/master/docs/CTF_Writeup/2020CISCN_finals.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/eggdkk/Web_Learning/edit/master/docs/CTF_Writeup/2020_ByteCTF.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -641,75 +627,58 @@
                   
                 
                 
-                <h1 id="2020ciscn_finals">2020CISCN_Finals<a class="headerlink" href="#2020ciscn_finals" title="Permanent link">&para;</a></h1>
-<h2 id="web1">Web1<a class="headerlink" href="#web1" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="x">&lt;!-- </span>
-<span class="x">    $query = &quot;SELECT * FROM fake_flag WHERE id = $id limit 0,$limit&quot;;</span>
-<span class="x">    //$query = &quot;SELECT flag FROM real_flag WHERE id = $id limit 0,$limit&quot;;</span>
-<span class="x">--&gt;</span>
-<span class="cp">&lt;?php</span>
-<span class="k">include</span> <span class="s1">&#39;conn.php&#39;</span><span class="p">;</span>
+                <h1 id="2020_bytectf">2020_ByteCTF<a class="headerlink" href="#2020_bytectf" title="Permanent link">&para;</a></h1>
+<h3 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>file:///proc/self/cmdline
+<div class="highlight"><pre><span></span><code>/usr/local/bin/python /usr/local/bin/scrapy crawl byte
 
-<span class="k">function</span> <span class="nf">is_safe</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$limit</span><span class="p">){</span>
-
-    <span class="nv">$common_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;!&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="s2">&quot;`&quot;</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span> <span class="p">,</span><span class="s1">&#39;between&#39;</span><span class="p">,</span><span class="s1">&#39;not&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="s2">&quot;like&quot;</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">];</span>
-    <span class="nv">$hack_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;union&#39;</span><span class="p">,</span><span class="s1">&#39;join&#39;</span><span class="p">,</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="s2">&quot;/**/&quot;</span><span class="p">,</span><span class="s2">&quot;substr&quot;</span><span class="p">,</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span><span class="s2">&quot;left&quot;</span><span class="p">,</span><span class="s2">&quot;right&quot;</span><span class="p">];</span>
-    <span class="nv">$id_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="s1">&#39;right&#39;</span><span class="p">,</span><span class="s1">&#39;like&#39;</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span><span class="s1">&#39;)&#39;</span><span class="p">];</span>
-    <span class="nv">$limit_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-&#39;</span><span class="p">];</span>
-
-    <span class="nv">$blacklist</span> <span class="o">=</span> <span class="nb">array_merge</span> <span class="p">(</span><span class="nv">$common_blacklist</span><span class="p">,</span> <span class="nv">$hack_list</span><span class="p">,</span> <span class="nv">$id_blacklist</span><span class="p">);</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$blacklist</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;your param &lt;b&gt;id&lt;/b&gt; look like dangerous!&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nv">$blacklist</span> <span class="o">=</span> <span class="nb">array_merge</span> <span class="p">(</span><span class="nv">$common_blacklist</span><span class="p">,</span> <span class="nv">$hack_list</span><span class="p">,</span> <span class="nv">$limit_blacklist</span><span class="p">);</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$blacklist</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$limit</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;your param &lt;b&gt;limit&lt;/b&gt; look like dangerous!&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span><span class="p">(</span> <span class="nv">$limit</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="k">or</span> <span class="nv">$limit</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;your param limit can&#39;t &gt;10 or &lt;=0&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-
-<span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;limit&#39;</span><span class="p">])){</span>
-    <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">];</span>
-    <span class="nv">$limit</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;limit&#39;</span><span class="p">];</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">is_safe</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$limit</span><span class="p">)){</span>
-        <span class="k">exit</span><span class="p">(</span><span class="s2">&quot;stop , hack!&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nv">$query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM fake_flag WHERE id = </span><span class="si">$id</span><span class="s2"> limit 0,</span><span class="si">$limit</span><span class="s2">&quot;</span><span class="p">;</span>
-    <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$mysqli</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$query</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;database error, please check your input&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">//var_dump($result);</span>
-    <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch_assoc</span><span class="p">();</span>
-    <span class="k">if</span><span class="p">(</span><span class="nv">$row</span> <span class="o">===</span> <span class="k">NULL</span><span class="p">){</span>
-        <span class="k">echo</span> <span class="s2">&quot;searched nothing&quot;</span><span class="p">;</span>
-    <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-        <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$row</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch_assoc</span><span class="p">())</span> <span class="p">{</span>
-        <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$row</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">free</span><span class="p">();</span>
-    <span class="nv">$mysqli</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="cp">?&gt;</span><span class="x"></span>
+&gt; python scrapy crawl byte
 </code></pre></div>
-根据提示真正的 <code>flag</code> 在 <code>real_flag</code> 这个表里，且字段名为 <code>flag</code>，需要通过 <code>id</code> 和 <code>limit</code> 来注入</p>
-<p>fix 阶段 读到源码</p>
-<h2 id="web2">Web2<a class="headerlink" href="#web2" title="Permanent link">&para;</a></h2>
-<h2 id="web3">Web3<a class="headerlink" href="#web3" title="Permanent link">&para;</a></h2>
+file:///proc/self/environ
+<div class="highlight"><pre><span></span><code>HOSTNAME=08be31721291 
+PYTHON_VERSION=3.8.5 
+PWD=/code 
+HOME=/home/ctf 
+LANG=C.UTF-8 
+GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568 
+SHLVL=1 
+PYTHON_PIP_VERSION=20.2.2 
+PYTHON_GET_PIP_SHA256=d4d62a0850fe0c2e6325b2cc20d818c580563de5a2038f917e3cb0e25280b4d1 
+PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/5578af97f8b2b466f4cdbebe18a3ba2d48ad1434/get-pip.py 
+PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
+_=/usr/local/bin/scrapy 
+</code></pre></div></p>
+<p>file:///proc/self/cwd/scrapy.cfg
+<div class="highlight"><pre><span></span><code><span class="c1"># Automatically created by: scrapy startproject </span>
+<span class="c1"># </span>
+<span class="c1"># For more information about the [deploy] section see: </span>
+<span class="c1"># https://scrapyd.readthedocs.io/en/latest/deploy.html </span>
+
+<span class="p p-Indicator">[</span><span class="nv">settings</span><span class="p p-Indicator">]</span> 
+<span class="l l-Scalar l-Scalar-Plain">default = bytectf.settings</span> 
+
+<span class="l l-Scalar l-Scalar-Plain">[deploy]</span> 
+<span class="l l-Scalar l-Scalar-Plain">#url = http://localhost:6800/</span> 
+<span class="l l-Scalar l-Scalar-Plain">project = bytectf</span> 
+</code></pre></div></p>
+<p>file:///proc/self/cwd/bytectf/settings.py</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">BOT_NAME</span> <span class="o">=</span> <span class="s1">&#39;bytectf&#39;</span> 
+<span class="n">SPIDER_MODULES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bytectf.spiders&#39;</span><span class="p">]</span> 
+<span class="n">NEWSPIDER_MODULE</span> <span class="o">=</span> <span class="s1">&#39;bytectf.spiders&#39;</span> 
+<span class="n">RETRY_ENABLED</span> <span class="o">=</span> <span class="kc">False</span> 
+<span class="n">ROBOTSTXT_OBEY</span> <span class="o">=</span> <span class="kc">False</span> 
+<span class="n">DOWNLOAD_TIMEOUT</span> <span class="o">=</span> <span class="mi">8</span> 
+<span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;scrapy_redis&#39;</span> 
+<span class="n">SCHEDULER</span> <span class="o">=</span> <span class="s2">&quot;scrapy_redis.scheduler.Scheduler&quot;</span> 
+<span class="n">DUPEFILTER_CLASS</span> <span class="o">=</span> <span class="s2">&quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span> 
+<span class="n">REDIS_HOST</span> <span class="o">=</span> <span class="s1">&#39;172.20.0.7&#39;</span> 
+<span class="n">REDIS_PORT</span> <span class="o">=</span> <span class="mi">6379</span> 
+<span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span> 
+ <span class="s1">&#39;bytectf.pipelines.BytectfPipeline&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> 
+<span class="p">}</span> 
+</code></pre></div>
+发现redis地址了</p>
+<p>docker system prune -a</p>
                 
               
               
