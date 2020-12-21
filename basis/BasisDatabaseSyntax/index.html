@@ -284,7 +284,7 @@
       
         <li class="md-nav__item">
   <a href="#mysql" class="md-nav__link">
-    MySQL基本语句
+    MySQL
   </a>
   
 </li>
@@ -333,6 +333,47 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    MongoDb
+  </a>
+  
+    <nav class="md-nav" aria-label="MongoDb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    root创建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    普通用户创建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-eqgt" class="md-nav__link">
+    MongoDB 比较运算符 $eq$gt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqlite" class="md-nav__link">
+    SQLite
+  </a>
   
 </li>
       
@@ -619,6 +660,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CTF_Writeup/2020HuaweiCTF/" title="2020华为云CTF" class="md-nav__link">
+      2020华为云CTF
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -705,7 +758,7 @@
       
         <li class="md-nav__item">
   <a href="#mysql" class="md-nav__link">
-    MySQL基本语句
+    MySQL
   </a>
   
 </li>
@@ -757,6 +810,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    MongoDb
+  </a>
+  
+    <nav class="md-nav" aria-label="MongoDb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    root创建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    普通用户创建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-eqgt" class="md-nav__link">
+    MongoDB 比较运算符 $eq$gt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqlite" class="md-nav__link">
+    SQLite
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -781,7 +875,7 @@
 <div class="toc">
 <ul>
 <li><a href="#_1">数据库基础</a><ul>
-<li><a href="#mysql">MySQL基本语句</a></li>
+<li><a href="#mysql">MySQL</a></li>
 <li><a href="#redis">Redis</a><ul>
 <li><a href="#_2">部署</a></li>
 </ul>
@@ -791,11 +885,18 @@
 <li><a href="#_4">基本语句</a></li>
 </ul>
 </li>
+<li><a href="#mongodb">MongoDb</a><ul>
+<li><a href="#root">root创建</a></li>
+<li><a href="#_5">普通用户创建</a></li>
+<li><a href="#mongodb-eqgt">MongoDB 比较运算符 $eq$gt</a></li>
+</ul>
+</li>
+<li><a href="#sqlite">SQLite</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<h2 id="mysql">MySQL基本语句<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h2>
+<h2 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code>docker run -d -p 3307:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
 </code></pre></div>
 ssh连接MySQL数据库
@@ -858,7 +959,95 @@ CREATE DATABASE hint;
 create table hint(username CHAR(5),ssrf CHAR(50));
 insert into hint values (&#39;admin&#39;,&#39;ffffffllllll444444gg_ssrf.php&#39;);
 insert into hint values (&#39;aaest&#39;,&#39;hacker.php&#39;);
+
+CREATE DATABASE ctf;
+\c ctf
+create table ffffflllllaaaaagggggg(dkkk CHAR(50));
+create table users(username CHAR(50),password CHAR(50));
+insert into users values (&#39;admin&#39;,&#39;sdjfhedkjvcaekrjf&#39;);
 </code></pre></div>
+
+<h2 id="mongodb">MongoDb<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">pull</span> <span class="n">mongo</span><span class="p">:</span><span class="n">latest</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">itd</span> <span class="c1">--name mongo -p 27017:27017 mongo --auth</span>
+</code></pre></div>
+
+<h3 id="root">root创建<a class="headerlink" href="#root" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">mongo</span>
+
+<span class="n">use</span> <span class="k">admin</span>
+<span class="n">db</span><span class="p">.</span><span class="k">createUser</span><span class="p">(</span><span class="err">{</span> <span class="k">user</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">pwd</span><span class="p">:</span> <span class="s1">&#39;xxxxxxxxx&#39;</span><span class="p">,</span> <span class="n">roles</span><span class="p">:</span> <span class="p">[</span> <span class="err">{</span> <span class="k">role</span><span class="p">:</span> <span class="ss">&quot;userAdminAnyDatabase&quot;</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="ss">&quot;admin&quot;</span> <span class="err">}</span> <span class="p">]</span> <span class="err">}</span><span class="p">)</span>
+
+<span class="n">db</span><span class="p">.</span><span class="n">auth</span><span class="p">(</span><span class="ss">&quot;root&quot;</span><span class="p">,</span><span class="ss">&quot;xxxxxxxxx&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="_5">普通用户创建<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">db</span><span class="p">.</span><span class="k">createUser</span><span class="p">(</span>
+  <span class="err">{</span>
+    <span class="k">user</span><span class="p">:</span> <span class="ss">&quot;test&quot;</span><span class="p">,</span>
+    <span class="n">pwd</span><span class="p">:</span> <span class="ss">&quot;test&quot;</span><span class="p">,</span>
+    <span class="n">roles</span><span class="p">:</span> <span class="p">[</span> <span class="err">{</span> <span class="k">role</span><span class="p">:</span> <span class="ss">&quot;readWrite&quot;</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="ss">&quot;app&quot;</span> <span class="err">}</span>
+             <span class="p">]</span>
+  <span class="err">}</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<h3 id="mongodb-eqgt">MongoDB 比较运算符 $eq$gt<a class="headerlink" href="#mongodb-eqgt" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="n">eq</span> <span class="o">=</span> <span class="p">(</span><span class="err">等于</span><span class="p">)</span>
+<span class="err">$</span><span class="n">gt</span> <span class="o">&gt;</span> <span class="p">(</span><span class="err">大于</span><span class="p">)</span>
+<span class="err">$</span><span class="n">gte</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="err">大于等于</span><span class="p">)</span>
+<span class="err">$</span><span class="n">lt</span> <span class="o">&lt;</span> <span class="p">(</span><span class="err">小于</span><span class="p">)</span>
+<span class="err">$</span><span class="n">lte</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="err">小于等于</span><span class="p">)</span>
+<span class="err">$</span><span class="n">ne</span> <span class="o">!=</span> <span class="p">(</span><span class="err">不等于</span><span class="p">)</span>
+<span class="err">$</span><span class="k">in</span> <span class="k">in</span> <span class="p">(</span><span class="k">in</span><span class="p">)</span>
+<span class="err">$</span><span class="n">nin</span> <span class="o">!</span><span class="k">in</span> <span class="p">(</span><span class="k">not</span> <span class="k">in</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="sqlite">SQLite<a class="headerlink" href="#sqlite" title="Permanent link">&para;</a></h2>
+<p>创建一个新的数据库
+sqlite3 testDB.db</p>
+<p>.databases 命令来检查它是否在数据库列表中
+ .quit 命令退出 sqlite 
+ sqlite3 testDB.db .dump &gt; testDB.sql  导出完整的数据库在一个文本文件
+ .schema tablename 命令得到表的完整信息
+创建表
+<div class="highlight"><pre><span></span><code>CREATE TABLE user(
+   ID INT PRIMARY KEY     NOT NULL,
+   USERNAME           TEXT    NOT NULL,
+   PASSWORD        CHAR(50)
+);
+CREATE TABLE flag(
+   flag   TEXT    NOT NULL
+);
+</code></pre></div>
+删除表
+<div class="highlight"><pre><span></span><code>DROP TABLE database_name.table_name;
+</code></pre></div>
+Insert 语句
+<div class="highlight"><pre><span></span><code>INSERT INTO TABLE_NAME [(column1, column2, column3,...columnN)]  
+VALUES (value1, value2, value3,...valueN);
+</code></pre></div>
+例如
+<div class="highlight"><pre><span></span><code>INSERT INTO user VALUES (1,&quot;admin&quot;,&quot;admin123&quot;);
+INSERT INTO user VALUES (2,&quot;dkk&quot;,&quot;test&quot;);
+INSERT INTO flag VALUES (&quot;flag{test}&quot;);
+</code></pre></div>
+Select 语句
+<code>SELECT * FROM table_name;</code>
+例如
+<div class="highlight"><pre><span></span><code>sqlite&gt; select * from user;
+1|admin|admin123
+2|dkk|test
+sqlite&gt; select * from flag;
+flag{test}
+</code></pre></div></p>
+<p><strong>Schema 信息</strong>
+点命令只在 SQLite 提示符中可用，所以当您进行带有 SQLite 的编程时，您要使用下面的带有 sqlite_master 表的 SELECT 语句来列出所有在数据库中创建的表：
+<div class="highlight"><pre><span></span><code>SELECT tbl_name FROM sqlite_master WHERE type = &#39;table&#39;;      //列出所有表
+SELECT group_concat(tbl_name) FROM sqlite_master WHERE type = &#39;table&#39;;
+
+SELECT sql FROM sqlite_master WHERE type = &#39;table&#39; AND tbl_name = &#39;user&#39;;      //查看表的具体信息
+</code></pre></div></p>
                 
               
               
