@@ -742,7 +742,22 @@
 <p><img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/11.png" /></p>
 <p>会去用file_get_contents读取含有css的link标签的href，然后拼接$cssurl，bypass一下就行</p>
 <h2 id="cloudstorage">cloudstorage<a class="headerlink" href="#cloudstorage" title="Permanent link">&para;</a></h2>
-<p>nodejs的题,不太会一开始以为找原型链污染（逃</p>
+<p>题目描述
+<div class="highlight"><pre><span></span><code>云存储！！！
+由于node单线程容易阻塞，所以提供多个解题环境端口从8000到8015，flag都是相同的。
+http://cloudstorage.xctf.org.cn:8000
+http://cloudstorage.xctf.org.cn:8001
+http://cloudstorage.xctf.org.cn:8002
+http://cloudstorage.xctf.org.cn:8003
+。。。
+http://cloudstorage.xctf.org.cn:8015
+解压后请详细阅读docker_build.zip附件中的readme.md
+下面的链接是docker save 导出的tar包，可使用docker load 命令导入。适用于docker build时网络不稳定，导致无法build的选手下载。
+https://test-storage111v1.obs.cn-south-1.myhuaweicloud.com:443/clouddisk.tar?AccessKeyId=ES2PKF82MJ93YTSE673W&amp;Expires=1608781380&amp;response-content-disposition=inline&amp;x-obs-security-token=gQpjbi1ub3J0aC00jJQiWuiM7ITkAMtI5Qc-ra7O3rTx5VSLL3pDF3nTfd43PvENOdi8bKzzzhthtnlrAzAhMOKSZ5yMKLe_znGDBNMb9lR2KPigeT8Zb8hTFVDzY1uLl1acWtZixyHPpjMVrosBGDd8wR1LcjtJiAq8Qvd44QU2kcgnYQXR4l4jSrQFO21Fs0LNECzbR6qdR-_vZcQBJjRPY47B-vUa3y1GE5qVCz1abrc19vrMlhXq0NV4XOKcsT-bDw311gpwI_ab2Rjtbjy89Kl54o3bZQhPMG4W_4rE8HZPFvte8kWQByakNw2B5JU0yZKcdVai4ELOy0QXZyGe8UNr0L7yACJBMhPt0iWf8yJA0_j4HV6uKiew-AUJSG_J2GZTPvXUngXPQbVCVvqhjcVbksvi9nVEAilUMO8jnpYdnjBe3J0vLWKfHgjdQuq1mx0IGQNZNpSbbJQmChux7LrMpbz7lRpspuQqOPE6cZLMs1a8RIfSpVp_lYwVFYGhmRfRNATmxLKE70_rNMhEDmMsilJpTXcSf5rwkHeXZGqA02eTfTzaB4w9NKOR04r46LEBX7SsMxf08re1KnZk07DDUAA06WOStpo6oRebCaLeJyl1DL0i0Pr2CAmSXbXcWYRDlvuX5aifGVSaM5lkkXSNaoUu2qG3c3oFc5CAzofexyyFCpnyJBWoGlyThvfnmW1y7WDEBodUBFNyrA3b6uvhspB7vk-BukE7ItxkrvgKlT_b2_ASGh00m1RbC0o2HiNhttUAsFZ2nMdIHpwXVNKf9Q8BdcZmZ0dJXLaJavuQ0PxLQUqbnhJo&amp;Signature=1nUOMaVeP2l0dMR/XLnX6c7YRtA%3D
+
+http://cloudstorage.xctf.org.cn:8000
+</code></pre></div>
+nodejs的题,不太会一开始以为找原型链污染（逃</p>
 <p>/flag路由可以读到flag，有127.0.0.1估计是SSRF了
 <img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/12.png" /></p>
 <p>/upload路由是文件上传，node不像php那样上传🐎，这条没思路</p>
