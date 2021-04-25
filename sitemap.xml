@@ -1,107 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://github.com/eggdkk/Web_Learning/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/Overview/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://github.com/eggdkk/Web_Learning/basis/Websec/</loc>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/Server%26Middleware/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/BasisDatabaseSyntax/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/include/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/PhpTricks/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/NoColumnInjection/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/PhpUnserialization/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/Redis/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://github.com/eggdkk/Web_Learning/basis/phpmyadmin_write_shell/</loc>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/usually/docker%2BPHPdebug/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/usually/oh_my_zsh/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/usually/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/usually/email/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/usually/golang_dockerAPI/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/basis/ew/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020xhlj/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020N1CTF/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020_zer0pts_CTF/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020_Hackergame/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020UNCTF_Web/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020dhb_Web/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020xyb/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020HuaweiCTF/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020Huawei2/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://github.com/eggdkk/Web_Learning/CTF_Writeup/2021zer0ptsCTF/</loc>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/vulhub/narak/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://github.com/eggdkk/Web_Learning/friendly_link/</loc>
-     <lastmod>2020-12-31</lastmod>
+     <lastmod>2021-04-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

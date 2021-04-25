@@ -1,1044 +1,229 @@
-
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-        <link rel="canonical" href="https://github.com/eggdkk/Web_Learning/basis/PhpTricks/">
-      
-      
-        <meta name="author" content="dkk">
-      
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
-    
-    
-      
-        <title>PHP的一些 “特性” - Web learning</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
-      
-      
-    
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
-      
-    
-    
-    
-      <link rel="stylesheet" href="../../css/extension.css">
-    
-      <link rel="stylesheet" href="../../css/simpleLightbox.scss">
-    
-    
-      
-    
-    
-  </head>
-  
-  
-    <body dir="ltr">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#php" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://github.com/eggdkk/Web_Learning" title="Web learning" class="md-header-nav__button md-logo" aria-label="Web learning">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
-            Web learning
-          </span>
-          <span class="md-header-nav__topic md-ellipsis">
-            
-              PHP的一些 “特性”
-            
-          </span>
-        </div>
-      
-    </div>
-    
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-    
-      <div class="md-header-nav__source">
-        
-<a href="https://github.com/eggdkk/Web_Learning/" title="Go to repository" class="md-source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    eggdkk/Web_Learning
-  </div>
-</a>
-      </div>
-    
-  </nav>
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-        
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="https://github.com/eggdkk/Web_Learning" title="Web learning" class="md-nav__button md-logo" aria-label="Web learning">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    Web learning
-  </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/eggdkk/Web_Learning/" title="Go to repository" class="md-source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    eggdkk/Web_Learning
-  </div>
-</a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../.." title="index" class="md-nav__link">
-      index
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
-    
-    <label class="md-nav__link" for="nav-2">
-      Web基础嗷
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="Web基础嗷" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        Web基础嗷
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Overview/" title="Web概述" class="md-nav__link">
-      Web概述
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Server%26Middleware/" title="服务器&中间件" class="md-nav__link">
-      服务器&中间件
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../BasisDatabaseSyntax/" title="数据库基础&tcpdump抓包" class="md-nav__link">
-      数据库基础&tcpdump抓包
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../include/" title="文件包含" class="md-nav__link">
-      文件包含
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        PHP的一些 “特性”
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
-      </label>
-    
-    <a href="./" title="PHP的一些 “特性”" class="md-nav__link md-nav__link--active">
-      PHP的一些 “特性”
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#parse_str" class="md-nav__link">
-    parse_str绕过
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#poseidonctfold-rick" class="md-nav__link">
-    最后放出来PoseidonCTF的Old Rick
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../NoColumnInjection/" title="SQL注入限制条件下获取表名&无列名注入" class="md-nav__link">
-      SQL注入限制条件下获取表名&无列名注入
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../PhpUnserialization/" title="PHP反序列化" class="md-nav__link">
-      PHP反序列化
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Redis/" title="Redis" class="md-nav__link">
-      Redis
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      👴平常记录的
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="👴平常记录的" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        👴平常记录的
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/docker%2BPHPdebug/" title="docker+PHPdebug" class="md-nav__link">
-      docker+PHPdebug
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/oh_my_zsh/" title="oh_my_zsh配置" class="md-nav__link">
-      oh_my_zsh配置
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/" title="Test" class="md-nav__link">
-      Test
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/email/" title="邮箱收集渗透钓鱼" class="md-nav__link">
-      邮箱收集渗透钓鱼
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../usually/golang_dockerAPI/" title="golang_dockerAPI开发小记" class="md-nav__link">
-      golang_dockerAPI开发小记
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ew/" title="ssh隧道_ew穿透" class="md-nav__link">
-      ssh隧道_ew穿透
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      CTF_Writeup
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="CTF_Writeup" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        CTF_Writeup
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020xhlj/" title="2020西湖论剑初赛" class="md-nav__link">
-      2020西湖论剑初赛
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020N1CTF/" title="2020N1CTF" class="md-nav__link">
-      2020N1CTF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020_zer0pts_CTF/" title="2020_zer0pts_CTF" class="md-nav__link">
-      2020_zer0pts_CTF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020_Hackergame/" title="Hackergame 2020" class="md-nav__link">
-      Hackergame 2020
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020UNCTF_Web/" title="2020UNCTF_Web" class="md-nav__link">
-      2020UNCTF_Web
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020dhb_Web/" title="2020dhb_Web" class="md-nav__link">
-      2020dhb_Web
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020xyb/" title="2020祥云杯" class="md-nav__link">
-      2020祥云杯
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020HuaweiCTF/" title="2020华为云CTF" class="md-nav__link">
-      2020华为云CTF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../CTF_Writeup/2020Huawei2/" title="2020华为云CTF第二场" class="md-nav__link">
-      2020华为云CTF第二场
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      vulhub靶场
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
-    </label>
-    <nav class="md-nav" aria-label="vulhub靶场" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
-        vulhub靶场
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../vulhub/narak/" title="narak" class="md-nav__link">
-      narak
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../friendly_link/" title="友链~" class="md-nav__link">
-      友链~
-    </a>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#parse_str" class="md-nav__link">
-    parse_str绕过
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#poseidonctfold-rick" class="md-nav__link">
-    最后放出来PoseidonCTF的Old Rick
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/eggdkk/Web_Learning/edit/master/docs/basis/PhpTricks.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  
-                
-                
-                <h1 id="php">PHP的一些 “特性”<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
-<p>ha1师傅扔来了一道国外CTF Web题 人傻了 做个总结
-遇到好玩的特性 持续更新</p>
-<h2 id="parse_str">parse_str绕过<a class="headerlink" href="#parse_str" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_METHOD&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;POST&quot;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="nb">parse_str</span><span class="p">(</span><span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">])[</span><span class="s2">&quot;query&quot;</span><span class="p">],</span> <span class="nv">$params</span><span class="p">);</span>
-        <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">]);</span>
-        <span class="nb">var_dump</span><span class="p">(</span><span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">])[</span><span class="s2">&quot;query&quot;</span><span class="p">]);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]</span> <span class="o">!==</span> <span class="s2">&quot;pickle_rick&quot;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;pickle_rick&quot;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">echo</span> <span class="s2">&quot;success&quot;</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="x">&gt;&gt;&gt; parse_url(&#39;/test&#39;)</span>
-<span class="x">=&gt; [</span>
-<span class="x">     &quot;path&quot; =&gt; &quot;/test&quot;,</span>
-<span class="x">   ]</span>
-<span class="x">&gt;&gt;&gt; parse_url(&#39;//test&#39;)</span>
-<span class="x">=&gt; [</span>
-<span class="x">     &quot;host&quot; =&gt; &quot;test&quot;,</span>
-<span class="x">   ]</span>
-<span class="x">&gt;&gt;&gt; parse_url(&#39;///test&#39;)</span>
-<span class="x">=&gt; false</span>
-</code></pre></div></p>
-<h2 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h2 id="poseidonctfold-rick">最后放出来PoseidonCTF的Old Rick<a class="headerlink" href="#poseidonctfold-rick" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nb">session_start</span><span class="p">();</span>
-<span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">&quot;is_rick&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-
-<span class="k">include</span> <span class="s2">&quot;secrets.php&quot;</span><span class="p">;</span> <span class="c1">// storing the variables not declared in this file</span>
-<span class="k">include</span> <span class="s2">&quot;ricksecret/db.php&quot;</span><span class="p">;</span> <span class="c1">// storing the login credentials for the database</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_METHOD&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;POST&quot;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="nb">parse_str</span><span class="p">(</span><span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">])[</span><span class="s2">&quot;query&quot;</span><span class="p">],</span> <span class="nv">$params</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]</span> <span class="o">!==</span> <span class="s2">&quot;pickle_rick&quot;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;pickle_rick&quot;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;second&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                    <span class="nv">$hashed</span> <span class="o">=</span> <span class="nb">crypt</span><span class="p">(</span><span class="nb">md5</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;second&quot;</span><span class="p">],</span> <span class="nx">fa1se</span><span class="p">),</span> <span class="s2">&quot;asdf&quot;</span><span class="p">);</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">hash_equals</span><span class="p">(</span><span class="nv">$hashed</span><span class="p">,</span> <span class="nb">crypt</span><span class="p">(</span><span class="nb">md5</span><span class="p">(</span><span class="nv">$hopper</span><span class="p">,</span> <span class="nx">fa1se</span><span class="p">),</span> <span class="s2">&quot;asdf&quot;</span><span class="p">)))</span> <span class="p">{</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;third&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                            <span class="k">if</span> <span class="p">(</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;third&quot;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-                                <span class="nv">$x</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;rightpaperheremorty.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span>
-                                <span class="nv">$tmp</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;third&quot;</span><span class="p">]);</span>
-                                <span class="nv">$content</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nb">filesize</span><span class="p">(</span><span class="s2">&quot;rightpaperheremorty.txt&quot;</span><span class="p">));</span>
-                                <span class="k">if</span> <span class="p">(</span><span class="nv">$tmp</span> <span class="o">===</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
-                                    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
-                                    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;fourth&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                        <span class="k">class</span> <span class="nc">injection_chambre</span> <span class="p">{</span>
-                                            <span class="k">public</span> <span class="nv">$sprue</span><span class="p">;</span>
-                                            <span class="k">public</span> <span class="nv">$mold_plate1</span><span class="p">;</span>
-                                            <span class="k">public</span> <span class="nv">$mold_plate2</span><span class="p">;</span>
-                                        <span class="p">}</span>
-                                        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/(^|;|{|})O:[0-9]+:</span><span class="se">\&quot;</span><span class="s2">/&quot;</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;fourth&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                            <span class="nv">$chambre</span> <span class="o">=</span> <span class="nb">unserialize</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;fourth&quot;</span><span class="p">]);</span>
-                                            <span class="k">if</span> <span class="p">(</span><span class="nv">$chambre</span><span class="p">)</span> <span class="p">{</span>
-                                                <span class="nv">$chambre</span><span class="o">-&gt;</span><span class="na">mold_plate1</span> <span class="o">=</span> <span class="nv">$barrel</span><span class="p">;</span>
-                                                <span class="k">if</span> <span class="p">(</span><span class="nv">$chambre</span><span class="o">-&gt;</span><span class="na">sprue</span> <span class="o">===</span> <span class="s2">&quot;pass&quot;</span> <span class="o">&amp;&amp;</span> <span class="nv">$chambre</span><span class="o">-&gt;</span><span class="na">mold_plate1</span> <span class="o">===</span> <span class="nv">$chambre</span><span class="o">-&gt;</span><span class="na">mold_plate2</span><span class="p">)</span> <span class="p">{</span>
-                                                    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;fifth&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                                        <span class="nv">$md5sum</span> <span class="o">=</span> <span class="nb">md5</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;secret_pass.txt&quot;</span><span class="p">)));</span>
-                                                        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/\/[a-z\.\/]+$/i&quot;</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;fifth&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                                            <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;fifth&quot;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">substr</span><span class="p">(</span><span class="nb">md5</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;fifth&quot;</span><span class="p">]),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="o">==</span> <span class="nv">$md5sum</span><span class="p">)</span> <span class="p">{</span>
-                                                                <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;sixth&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                                                    <span class="k">if</span> <span class="p">(</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;sixth&quot;</span><span class="p">],</span> <span class="nx">FILTER_VALIDATE_URL</span><span class="p">))</span> <span class="p">{</span>
-                                                                        <span class="nv">$url</span> <span class="o">=</span> <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;sixth&quot;</span><span class="p">]);</span>
-                                                                        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/tftp|sftp|http|https|file|dict/i&quot;</span><span class="p">,</span> <span class="nv">$url</span><span class="p">[</span><span class="s2">&quot;scheme&quot;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/ricksecret/i&quot;</span><span class="p">,</span> <span class="nv">$url</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/\.\./i&quot;</span><span class="p">,</span> <span class="nv">$url</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/read|base|iconv|zlib/i&quot;</span><span class="p">,</span> <span class="nv">$url</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]))</span> <span class="p">{</span>    
-                                                                            <span class="k">echo</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;sixth&quot;</span><span class="p">])</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
-                                                                            <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;sixth_second&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                                                                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/sixth_second|sixth second/i&quot;</span><span class="p">,</span> <span class="nb">urldecode</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;QUERY_STRING&quot;</span><span class="p">])))</span> <span class="p">{</span>
-                                                                                    <span class="nv">$dbms</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mysqli</span><span class="p">(</span><span class="nv">$host</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;sixth_second&quot;</span><span class="p">],</span> <span class="nv">$db_name</span><span class="p">);</span> <span class="c1">// There&#39;s one row where id=1 and secret=&#39;r1cks&#39;</span>
-                                                                                    <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">set_charset</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">);</span>
-                                                                                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">)</span> <span class="p">{</span>
-                                                                                        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;seventh&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                                                                            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/\.|_|%|regexp|like|</span><span class="se">\x09</span><span class="s2">| |</span><span class="se">\x0d</span><span class="s2">|</span><span class="se">\x0a</span><span class="s2">|</span><span class="se">\x0b</span><span class="s2">|\/|\*|x|0|r1cks|\(|\)/i&quot;</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;seventh&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                                                                                <span class="nv">$one</span> <span class="o">=</span> <span class="s2">&quot;SELECT secret FROM top_secrets WHERE secret=&#39;</span><span class="si">{</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;seventh&quot;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">;</span>
-                                                                                                <span class="nv">$two</span> <span class="o">=</span> <span class="s2">&quot;SELECT secret FROM top_secrets /*</span><span class="si">{</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;seventh&quot;</span><span class="p">]</span><span class="si">}</span><span class="s2">*/&quot;</span><span class="p">;</span>
-                                                                                                <span class="nv">$exe_one</span> <span class="o">=</span> <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$one</span><span class="p">);</span>
-                                                                                                <span class="k">if</span> <span class="p">(</span><span class="nv">$exe_one</span><span class="o">-&gt;</span><span class="na">num_rows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-                                                                                                    <span class="nv">$res</span> <span class="o">=</span> <span class="nv">$exe_one</span><span class="o">-&gt;</span><span class="na">fetch_assoc</span><span class="p">();</span>
-                                                                                                    <span class="k">if</span> <span class="p">(</span><span class="nv">$res</span><span class="p">[</span><span class="s2">&quot;secret&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;r1cks&quot;</span><span class="p">)</span> <span class="p">{</span>
-                                                                                                        <span class="nv">$exe_two</span> <span class="o">=</span> <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$two</span><span class="p">);</span>
-                                                                                                        <span class="k">if</span> <span class="p">(</span><span class="nv">$exe_two</span><span class="o">-&gt;</span><span class="na">num_rows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-                                                                                                            <span class="nv">$res</span> <span class="o">=</span> <span class="nv">$exe_two</span><span class="o">-&gt;</span><span class="na">fetch_assoc</span><span class="p">();</span>
-                                                                                                            <span class="k">if</span> <span class="p">(</span><span class="nv">$res</span><span class="p">[</span><span class="s2">&quot;secret&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;th3sm4rt3s7&quot;</span><span class="p">)</span> <span class="p">{</span>
-                                                                                                                <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;eigth&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                                                                                                    <span class="nb">extract</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">);</span>
-                                                                                                                    <span class="k">if</span> <span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">&quot;is_rick&quot;</span><span class="p">])</span> <span class="p">{</span>
-                                                                                                                        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;nineth&quot;</span><span class="p">]))</span> <span class="p">{</span>
-                                                                                                                            <span class="nv">$E</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;nineth&quot;</span><span class="p">];</span>
-                                                                                                                            <span class="nv">$y</span> <span class="o">=</span> <span class="nb">create_function</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$E</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">));</span>
-                                                                                                                        <span class="p">}</span>
-                                                                                                                        <span class="k">else</span> <span class="p">{</span>
-                                                                                                                            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-                                                                                                                        <span class="p">}</span>
-                                                                                                                    <span class="p">}</span>
-                                                                                                                    <span class="k">else</span> <span class="p">{</span>
-                                                                                                                        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Access denied for non ricks.&quot;</span><span class="p">);</span>
-                                                                                                                    <span class="p">}</span>
-                                                                                                                <span class="p">}</span>
-                                                                                                                <span class="k">else</span> <span class="p">{</span>
-                                                                                                                    <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find cookies Morty?&quot;</span><span class="p">);</span>
-                                                                                                                <span class="p">}</span>
-                                                                                                            <span class="p">}</span>
-                                                                                                            <span class="k">else</span> <span class="p">{</span>
-                                                                                                                <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
-                                                                                                                <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Oh not again Morty.&quot;</span><span class="p">);</span>
-                                                                                                            <span class="p">}</span>
-                                                                                                        <span class="p">}</span>
-                                                                                                        <span class="k">else</span> <span class="p">{</span>
-                                                                                                            <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
-                                                                                                            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Maybe somehow close.&quot;</span><span class="p">);</span>
-                                                                                                        <span class="p">}</span>
-                                                                                                    <span class="p">}</span>
-                                                                                                    <span class="k">else</span> <span class="p">{</span>
-                                                                                                        <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
-                                                                                                        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Wait what&#39;s that Morty?&quot;</span><span class="p">);</span>
-                                                                                                    <span class="p">}</span>
-                                                                                                <span class="p">}</span>
-                                                                                                <span class="k">else</span> <span class="p">{</span>
-                                                                                                    <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
-                                                                                                    <span class="k">die</span><span class="p">(</span><span class="s2">&quot;That&#39;s not even close Morty.&quot;</span><span class="p">);</span>
-                                                                                                <span class="p">}</span>
-                                                                                            <span class="p">}</span>
-                                                                                            <span class="k">else</span> <span class="p">{</span>
-                                                                                                <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
-                                                                                                <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You touched something that you&#39;re not supposed to touch.&quot;</span><span class="p">);</span>
-                                                                                            <span class="p">}</span>
-                                                                                        <span class="p">}</span>
-                                                                                        <span class="k">else</span> <span class="p">{</span>
-                                                                                            <span class="nv">$dbms</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
-                                                                                            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-                                                                                        <span class="p">}</span>
-                                                                                    <span class="p">}</span>
-                                                                                    <span class="k">else</span> <span class="p">{</span>
-                                                                                        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;I don&#39;t think that&#39;s my password Morty.&quot;</span><span class="p">);</span>
-                                                                                    <span class="p">}</span>
-                                                                                <span class="p">}</span>
-                                                                                <span class="k">else</span> <span class="p">{</span>
-                                                                                    <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You touched something that you&#39;re not supposed to touch.&quot;</span><span class="p">);</span>
-                                                                                <span class="p">}</span>
-                                                                            <span class="p">}</span>
-                                                                            <span class="k">else</span> <span class="p">{</span>
-                                                                                <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-                                                                            <span class="p">}</span>
-                                                                        <span class="p">}</span>
-                                                                        <span class="k">else</span> <span class="p">{</span>
-                                                                            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You touched something that you&#39;re not supposed to touch.&quot;</span><span class="p">);</span>
-                                                                        <span class="p">}</span>
-                                                                    <span class="p">}</span>
-                                                                    <span class="k">else</span> <span class="p">{</span>
-                                                                        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;That&#39;s suspicious Morty.&quot;</span><span class="p">);</span>
-                                                                    <span class="p">}</span>
-                                                                <span class="p">}</span>
-                                                                <span class="k">else</span> <span class="p">{</span>
-                                                                    <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-                                                                <span class="p">}</span>
-                                                            <span class="p">}</span>
-                                                            <span class="k">else</span> <span class="p">{</span>
-                                                                <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$md5sum</span><span class="si">}</span><span class="s2">&lt;br /&gt;&quot;</span><span class="p">;</span>
-                                                                <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You lost against the jugling of Rick.&quot;</span><span class="p">);</span>
-                                                            <span class="p">}</span>
-                                                        <span class="p">}</span>
-                                                        <span class="k">else</span> <span class="p">{</span>
-                                                            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You touched something that you&#39;re not supposed to touch.&quot;</span><span class="p">);</span>
-                                                        <span class="p">}</span>
-                                                    <span class="p">}</span>
-                                                    <span class="k">else</span> <span class="p">{</span>
-                                                        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-                                                    <span class="p">}</span>
-                                                <span class="p">}</span>
-                                                <span class="k">else</span> <span class="p">{</span>
-                                                    <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Absolutely not the same.&quot;</span><span class="p">);</span>
-                                                <span class="p">}</span>
-                                            <span class="p">}</span>
-                                            <span class="k">else</span> <span class="p">{</span>
-                                                <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Are you sure that&#39;s Ok?&quot;</span><span class="p">);</span>
-                                            <span class="p">}</span>
-                                        <span class="p">}</span>
-                                        <span class="k">else</span> <span class="p">{</span>
-                                            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You touched something that you&#39;re not supposed to touch.&quot;</span><span class="p">);</span>
-                                        <span class="p">}</span>
-                                    <span class="p">}</span>
-                                    <span class="k">else</span> <span class="p">{</span>
-                                        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-                                    <span class="p">}</span>
-                                <span class="p">}</span>
-                                <span class="k">else</span> <span class="p">{</span>
-                                    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
-                                    <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You picked up the wrong paper.&quot;</span><span class="p">);</span>
-                                <span class="p">}</span>
-                            <span class="p">}</span>
-                            <span class="k">else</span> <span class="p">{</span>
-                                <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You don&#39;t know which paper reading it will lead to the right path.&quot;</span><span class="p">);</span>
-                            <span class="p">}</span>
-                        <span class="p">}</span>
-                        <span class="k">else</span> <span class="p">{</span>
-                            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                    <span class="k">else</span> <span class="p">{</span>
-                        <span class="k">echo</span> <span class="nb">md5</span><span class="p">(</span><span class="nv">$hopper</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
-                        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You didn&#39;t know which hopper to use for the injection.&quot;</span><span class="p">);</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-                <span class="k">else</span> <span class="p">{</span>
-                    <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            <span class="k">else</span> <span class="p">{</span>
-                <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You were putting the wrong matter.&quot;</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span>
-            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;You made a mistake that resulted in an explotion.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-        <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Where would you find the components of the injection?&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">else</span> <span class="p">{</span>
-    <span class="nb">show_source</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
-    <span class="k">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-          <a href="../include/" title="文件包含" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                文件包含
-              </div>
-            </div>
-          </a>
-        
-        
-          <a href="../NoColumnInjection/" title="SQL注入限制条件下获取表名&无列名注入" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                SQL注入限制条件下获取表名&无列名注入
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-      </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
-      
-      <script>
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link href=https://github.com/eggdkk/Web_Learning/basis/PhpTricks/ rel=canonical><meta name=author content=dkk><link rel="shortcut icon" href=../../assets/images/favicon.png><meta name=generator content="mkdocs-1.1.2, mkdocs-material-5.4.0"><title>PHP的一些 “特性” - Web learning</title><link rel=stylesheet href=../../assets/stylesheets/main.fe0cca5b.min.css><link rel=stylesheet href=../../css/extension.css><link rel=stylesheet href=../../css/simpleLightbox.scss></head> <body dir=ltr> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#php class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://github.com/eggdkk/Web_Learning title="Web learning" class="md-header-nav__button md-logo" aria-label="Web learning"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> Web learning </span> <span class="md-header-nav__topic md-ellipsis"> PHP的一些 “特性” </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header-nav__source> <a href=https://github.com/eggdkk/Web_Learning/ title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> eggdkk/Web_Learning </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://github.com/eggdkk/Web_Learning title="Web learning" class="md-nav__button md-logo" aria-label="Web learning"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg> </a> Web learning </label> <div class=md-nav__source> <a href=https://github.com/eggdkk/Web_Learning/ title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> eggdkk/Web_Learning </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. title=index class=md-nav__link> index </a> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-2 type=checkbox id=nav-2 checked> <label class=md-nav__link for=nav-2> Web基础嗷 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Web基础嗷 data-md-level=1> <label class=md-nav__title for=nav-2> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Web基础嗷 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../Overview/ title=Web概述 class=md-nav__link> Web概述 </a> </li> <li class=md-nav__item> <a href=../Websec/ title=Web安全综述 class=md-nav__link> Web安全综述 </a> </li> <li class=md-nav__item> <a href=../Server%26Middleware/ title=服务器&中间件 class=md-nav__link> 服务器&中间件 </a> </li> <li class=md-nav__item> <a href=../BasisDatabaseSyntax/ title=数据库基础&tcpdump抓包 class=md-nav__link> 数据库基础&tcpdump抓包 </a> </li> <li class=md-nav__item> <a href=../include/ title=文件包含 class=md-nav__link> 文件包含 </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> PHP的一些 “特性” <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg> </span> </label> <a href=./ title="PHP的一些 “特性”" class="md-nav__link md-nav__link--active"> PHP的一些 “特性” </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#parse_str class=md-nav__link> parse_str绕过 </a> </li> <li class=md-nav__item> <a href=#_1 class=md-nav__link> </a> </li> <li class=md-nav__item> <a href=#poseidonctfold-rick class=md-nav__link> 最后放出来PoseidonCTF的Old Rick </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../NoColumnInjection/ title=SQL注入限制条件下获取表名&无列名注入 class=md-nav__link> SQL注入限制条件下获取表名&无列名注入 </a> </li> <li class=md-nav__item> <a href=../PhpUnserialization/ title=PHP反序列化 class=md-nav__link> PHP反序列化 </a> </li> <li class=md-nav__item> <a href=../Redis/ title=Redis class=md-nav__link> Redis </a> </li> <li class=md-nav__item> <a href=../phpmyadmin_write_shell/ title=basis class=md-nav__link> basis </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3 type=checkbox id=nav-3> <label class=md-nav__link for=nav-3> 👴平常记录的 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=👴平常记录的 data-md-level=1> <label class=md-nav__title for=nav-3> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> 👴平常记录的 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../usually/docker%2BPHPdebug/ title=docker+PHPdebug class=md-nav__link> docker+PHPdebug </a> </li> <li class=md-nav__item> <a href=../../usually/oh_my_zsh/ title=oh_my_zsh配置 class=md-nav__link> oh_my_zsh配置 </a> </li> <li class=md-nav__item> <a href=../../usually/ title=Test class=md-nav__link> Test </a> </li> <li class=md-nav__item> <a href=../../usually/email/ title=邮箱收集渗透钓鱼 class=md-nav__link> 邮箱收集渗透钓鱼 </a> </li> <li class=md-nav__item> <a href=../../usually/golang_dockerAPI/ title=golang_dockerAPI开发小记 class=md-nav__link> golang_dockerAPI开发小记 </a> </li> <li class=md-nav__item> <a href=../ew/ title=ssh隧道_ew穿透 class=md-nav__link> ssh隧道_ew穿透 </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-4 type=checkbox id=nav-4> <label class=md-nav__link for=nav-4> CTF_Writeup <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=CTF_Writeup data-md-level=1> <label class=md-nav__title for=nav-4> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> CTF_Writeup </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../CTF_Writeup/2020xhlj/ title=2020西湖论剑初赛 class=md-nav__link> 2020西湖论剑初赛 </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2020N1CTF/ title=2020N1CTF class=md-nav__link> 2020N1CTF </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2020_zer0pts_CTF/ title=2020_zer0pts_CTF class=md-nav__link> 2020_zer0pts_CTF </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2020_Hackergame/ title="Hackergame 2020" class=md-nav__link> Hackergame 2020 </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2020UNCTF_Web/ title=2020UNCTF_Web class=md-nav__link> 2020UNCTF_Web </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2020dhb_Web/ title=2020dhb_Web class=md-nav__link> 2020dhb_Web </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2020xyb/ title=2020祥云杯 class=md-nav__link> 2020祥云杯 </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2020HuaweiCTF/ title=2020华为云CTF class=md-nav__link> 2020华为云CTF </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2020Huawei2/ title=2020华为云CTF第二场 class=md-nav__link> 2020华为云CTF第二场 </a> </li> <li class=md-nav__item> <a href=../../CTF_Writeup/2021zer0ptsCTF/ title=2021zer0ptsCTF class=md-nav__link> 2021zer0ptsCTF </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5> <label class=md-nav__link for=nav-5> vulhub靶场 <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=vulhub靶场 data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> vulhub靶场 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../vulhub/narak/ title=narak class=md-nav__link> narak </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../../friendly_link/ title=友链~ class=md-nav__link> 友链~ </a> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#parse_str class=md-nav__link> parse_str绕过 </a> </li> <li class=md-nav__item> <a href=#_1 class=md-nav__link> </a> </li> <li class=md-nav__item> <a href=#poseidonctfold-rick class=md-nav__link> 最后放出来PoseidonCTF的Old Rick </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <a href=https://github.com/eggdkk/Web_Learning/edit/master/docs/basis/PhpTricks.md title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <h1 id=php>PHP的一些 “特性”<a class=headerlink href=#php title="Permanent link">&para;</a></h1> <p>ha1师傅扔来了一道国外CTF Web题 人傻了 做个总结 遇到好玩的特性 持续更新</p> <h2 id=parse_str>parse_str绕过<a class=headerlink href=#parse_str title="Permanent link">&para;</a></h2> <pre><code class=php>&lt;?php
+if ($_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;POST&quot;) {
+    if (isset($_GET[&quot;first&quot;])) {
+        parse_str(parse_url($_SERVER[&quot;REQUEST_URI&quot;])[&quot;query&quot;], $params);
+        var_dump($_SERVER[&quot;REQUEST_URI&quot;]);
+        var_dump(parse_url($_SERVER[&quot;REQUEST_URI&quot;])[&quot;query&quot;]);
+        if ($params[&quot;first&quot;] !== &quot;pickle_rick&quot;) {
+            if ($_GET[&quot;first&quot;] === &quot;pickle_rick&quot;) {
+                echo &quot;success&quot;;
+            }
+        }
+        }
+    }else{
+        die(&quot;1&quot;);
+    }
+</code></pre> <pre><code class=php>&gt;&gt;&gt; parse_url('/test')
+=&gt; [
+     &quot;path&quot; =&gt; &quot;/test&quot;,
+   ]
+&gt;&gt;&gt; parse_url('//test')
+=&gt; [
+     &quot;host&quot; =&gt; &quot;test&quot;,
+   ]
+&gt;&gt;&gt; parse_url('///test')
+=&gt; false
+</code></pre> <h2 id=_1><a class=headerlink href=#_1 title="Permanent link">&para;</a></h2> <h2 id=poseidonctfold-rick>最后放出来PoseidonCTF的Old Rick<a class=headerlink href=#poseidonctfold-rick title="Permanent link">&para;</a></h2> <pre><code class=php>&lt;?php
+session_start();
+$_SESSION[&quot;is_rick&quot;] = false;
+
+include &quot;secrets.php&quot;; // storing the variables not declared in this file
+include &quot;ricksecret/db.php&quot;; // storing the login credentials for the database
+
+if ($_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;POST&quot;) {
+    if (isset($_GET[&quot;first&quot;])) {
+        parse_str(parse_url($_SERVER[&quot;REQUEST_URI&quot;])[&quot;query&quot;], $params);
+        if ($params[&quot;first&quot;] !== &quot;pickle_rick&quot;) {
+            if ($_GET[&quot;first&quot;] === &quot;pickle_rick&quot;) {
+                if (isset($_GET[&quot;second&quot;])) {
+                    $hashed = crypt(md5($_GET[&quot;second&quot;], fa1se), &quot;asdf&quot;);
+                    if (hash_equals($hashed, crypt(md5($hopper, fa1se), &quot;asdf&quot;))) {
+                        if (isset($_GET[&quot;third&quot;])) {
+                            if (strlen($_GET[&quot;third&quot;]) &lt;= 10) {
+                                $x = fopen(&quot;rightpaperheremorty.txt&quot;, &quot;r&quot;);
+                                $tmp = file_get_contents($_GET[&quot;third&quot;]);
+                                $content = fread($x, filesize(&quot;rightpaperheremorty.txt&quot;));
+                                if ($tmp === $content) {
+                                    fclose($x);
+                                    if (isset($_GET[&quot;fourth&quot;])) {
+                                        class injection_chambre {
+                                            public $sprue;
+                                            public $mold_plate1;
+                                            public $mold_plate2;
+                                        }
+                                        if (!preg_match(&quot;/(^|;|{|})O:[0-9]+:\&quot;/&quot;, $_GET[&quot;fourth&quot;])) {
+                                            $chambre = unserialize($_GET[&quot;fourth&quot;]);
+                                            if ($chambre) {
+                                                $chambre-&gt;mold_plate1 = $barrel;
+                                                if ($chambre-&gt;sprue === &quot;pass&quot; &amp;&amp; $chambre-&gt;mold_plate1 === $chambre-&gt;mold_plate2) {
+                                                    if (isset($_POST[&quot;fifth&quot;])) {
+                                                        $md5sum = md5(trim(file_get_contents(&quot;secret_pass.txt&quot;)));
+                                                        if (preg_match(&quot;/\/[a-z\.\/]+$/i&quot;, $_POST[&quot;fifth&quot;])) {
+                                                            if (file_exists($_POST[&quot;fifth&quot;]) &amp;&amp; substr(md5($_POST[&quot;fifth&quot;]), 0, 8) == $md5sum) {
+                                                                if (isset($_GET[&quot;sixth&quot;])) {
+                                                                    if (filter_var($_GET[&quot;sixth&quot;], FILTER_VALIDATE_URL)) {
+                                                                        $url = parse_url($_GET[&quot;sixth&quot;]);
+                                                                        if (!preg_match(&quot;/tftp|sftp|http|https|file|dict/i&quot;, $url[&quot;scheme&quot;]) &amp;&amp; preg_match(&quot;/ricksecret/i&quot;, $url[&quot;path&quot;]) &amp;&amp; !preg_match(&quot;/\.\./i&quot;, $url[&quot;path&quot;]) &amp;&amp; !preg_match(&quot;/read|base|iconv|zlib/i&quot;, $url[&quot;path&quot;])) {    
+                                                                            echo file_get_contents($_GET[&quot;sixth&quot;]) . &quot;&lt;br /&gt;&quot;;
+                                                                            if (isset($_GET[&quot;sixth_second&quot;])) {
+                                                                                if (!preg_match(&quot;/sixth_second|sixth second/i&quot;, urldecode($_SERVER[&quot;QUERY_STRING&quot;]))) {
+                                                                                    $dbms = new mysqli($host, $username, $_GET[&quot;sixth_second&quot;], $db_name); // There's one row where id=1 and secret='r1cks'
+                                                                                    $dbms-&gt;set_charset(&quot;utf8&quot;);
+                                                                                    if (!$dbms-&gt;connect_error) {
+                                                                                        if (isset($_GET[&quot;seventh&quot;])) {
+                                                                                            if (!preg_match(&quot;/\.|_|%|regexp|like|\x09| |\x0d|\x0a|\x0b|\/|\*|x|0|r1cks|\(|\)/i&quot;, $_GET[&quot;seventh&quot;])) {
+                                                                                                $one = &quot;SELECT secret FROM top_secrets WHERE secret='{$_GET[&quot;seventh&quot;]}'&quot;;
+                                                                                                $two = &quot;SELECT secret FROM top_secrets /*{$_GET[&quot;seventh&quot;]}*/&quot;;
+                                                                                                $exe_one = $dbms-&gt;query($one);
+                                                                                                if ($exe_one-&gt;num_rows &gt; 0) {
+                                                                                                    $res = $exe_one-&gt;fetch_assoc();
+                                                                                                    if ($res[&quot;secret&quot;] === &quot;r1cks&quot;) {
+                                                                                                        $exe_two = $dbms-&gt;query($two);
+                                                                                                        if ($exe_two-&gt;num_rows &gt; 0) {
+                                                                                                            $res = $exe_two-&gt;fetch_assoc();
+                                                                                                            if ($res[&quot;secret&quot;] === &quot;th3sm4rt3s7&quot;) {
+                                                                                                                if (isset($_GET[&quot;eigth&quot;])) {
+                                                                                                                    extract($_COOKIE);
+                                                                                                                    if ($_SESSION[&quot;is_rick&quot;]) {
+                                                                                                                        if (isset($_POST[&quot;nineth&quot;])) {
+                                                                                                                            $E = $_POST[&quot;nineth&quot;];
+                                                                                                                            $y = create_function('', substr($E, 0, 12));
+                                                                                                                        }
+                                                                                                                        else {
+                                                                                                                            die(&quot;Where would you find the components of the injection?&quot;);
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                    else {
+                                                                                                                        die(&quot;Access denied for non ricks.&quot;);
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                else {
+                                                                                                                    die(&quot;Where would you find cookies Morty?&quot;);
+                                                                                                                }
+                                                                                                            }
+                                                                                                            else {
+                                                                                                                $dbms-&gt;close();
+                                                                                                                die(&quot;Oh not again Morty.&quot;);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        else {
+                                                                                                            $dbms-&gt;close();
+                                                                                                            die(&quot;Maybe somehow close.&quot;);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    else {
+                                                                                                        $dbms-&gt;close();
+                                                                                                        die(&quot;Wait what's that Morty?&quot;);
+                                                                                                    }
+                                                                                                }
+                                                                                                else {
+                                                                                                    $dbms-&gt;close();
+                                                                                                    die(&quot;That's not even close Morty.&quot;);
+                                                                                                }
+                                                                                            }
+                                                                                            else {
+                                                                                                $dbms-&gt;close();
+                                                                                                die(&quot;You touched something that you're not supposed to touch.&quot;);
+                                                                                            }
+                                                                                        }
+                                                                                        else {
+                                                                                            $dbms-&gt;close();
+                                                                                            die(&quot;Where would you find the components of the injection?&quot;);
+                                                                                        }
+                                                                                    }
+                                                                                    else {
+                                                                                        die(&quot;I don't think that's my password Morty.&quot;);
+                                                                                    }
+                                                                                }
+                                                                                else {
+                                                                                    die(&quot;You touched something that you're not supposed to touch.&quot;);
+                                                                                }
+                                                                            }
+                                                                            else {
+                                                                                die(&quot;Where would you find the components of the injection?&quot;);
+                                                                            }
+                                                                        }
+                                                                        else {
+                                                                            die(&quot;You touched something that you're not supposed to touch.&quot;);
+                                                                        }
+                                                                    }
+                                                                    else {
+                                                                        die(&quot;That's suspicious Morty.&quot;);
+                                                                    }
+                                                                }
+                                                                else {
+                                                                    die(&quot;Where would you find the components of the injection?&quot;);
+                                                                }
+                                                            }
+                                                            else {
+                                                                echo &quot;{$md5sum}&lt;br /&gt;&quot;;
+                                                                die(&quot;You lost against the jugling of Rick.&quot;);
+                                                            }
+                                                        }
+                                                        else {
+                                                            die(&quot;You touched something that you're not supposed to touch.&quot;);
+                                                        }
+                                                    }
+                                                    else {
+                                                        die(&quot;Where would you find the components of the injection?&quot;);
+                                                    }
+                                                }
+                                                else {
+                                                    die(&quot;Absolutely not the same.&quot;);
+                                                }
+                                            }
+                                            else {
+                                                die(&quot;Are you sure that's Ok?&quot;);
+                                            }
+                                        }
+                                        else {
+                                            die(&quot;You touched something that you're not supposed to touch.&quot;);
+                                        }
+                                    }
+                                    else {
+                                        die(&quot;Where would you find the components of the injection?&quot;);
+                                    }
+                                }
+                                else {
+                                    fclose($x);
+                                    die(&quot;You picked up the wrong paper.&quot;);
+                                }
+                            }
+                            else {
+                                die(&quot;You don't know which paper reading it will lead to the right path.&quot;);
+                            }
+                        }
+                        else {
+                            die(&quot;Where would you find the components of the injection?&quot;);
+                        }
+                    }
+                    else {
+                        echo md5($hopper, false) . &quot;&lt;br /&gt;&quot;;
+                        die(&quot;You didn't know which hopper to use for the injection.&quot;);
+                    }
+                }
+                else {
+                    die(&quot;Where would you find the components of the injection?&quot;);
+                }
+            }
+            else {
+                die(&quot;You were putting the wrong matter.&quot;);
+            }
+        }
+        else {
+            die(&quot;You made a mistake that resulted in an explotion.&quot;);
+        }
+    }
+    else {
+        die(&quot;Where would you find the components of the injection?&quot;);
+    }
+}
+else {
+    show_source(__FILE__);
+    exit(0);
+}
+?&gt;
+</code></pre> <hr> <div class=md-source-date> <small> Last update: 2021-04-25 </small> </div> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid" aria-label=Footer> <a href=../include/ title=文件包含 class="md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Previous </span> 文件包含 </div> </div> </a> <a href=../NoColumnInjection/ title=SQL注入限制条件下获取表名&无列名注入 class="md-footer-nav__link md-footer-nav__link--next" rel=next> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Next </span> SQL注入限制条件下获取表名&无列名注入 </div> </div> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <script src=../../assets/javascripts/vendor.d710d30a.min.js></script> <script src=../../assets/javascripts/bundle.b39636ac.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script> <script>
         app = initialize({
           base: "../..",
           features: [],
@@ -1046,14 +231,4 @@
             worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
           }, typeof search !== "undefined" && search)
         })
-      </script>
-      
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      
-        <script src="../../js/simpleLightbox.min.js"></script>
-      
-        <script src="../../js/extension.js"></script>
-      
-    
-  </body>
-</html>
+      </script> <script src=https://code.jquery.com/jquery-3.2.1.min.js></script> <script src=../../js/simpleLightbox.min.js></script> <script src=../../js/extension.js></script> <script src=../../js/vendor.js></script> <script src=../../js/app.js></script> </body> </html>
